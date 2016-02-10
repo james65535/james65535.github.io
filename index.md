@@ -2,6 +2,13 @@
 layout: archive
 permalink: /
 title: "Latest Posts"
+date: 
+modified:
+excerpt:
+image:
+  feature: main.jpg
+  teaser:
+  thumb:
 ---
 
 <div class="tiles">
