@@ -25,14 +25,14 @@ title: "About James65535"
 
   <div class="col-md-6 post-nav">
     <div id="experience">
-      <h2>Experience</h2>
+      <h4 class="text-muted">Experience</h4>
       <ul>
         <li>Private IaaS Design and Implementation for a range of customers across verticals</li>
         <li>Public Cloud IaaS Design and Implementation for Service Providers</li>
         <li>SDLC Value-Chain Mapping</li>
         <li>Developer Pipeline Automation</li>
       </ul>
-      <p>links to projects will be added <a href="{{ "/projects" | prepend:site.baseurl }}">here</a>.</p>
+      <p>Links to projects may be viewed <a href="{{ "/projects" | prepend:site.baseurl }}">here</a>.</p>
     </div> 
 
     <div id="contacts">
