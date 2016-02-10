@@ -17,6 +17,7 @@ title: "About James65535"
         <ul>
           <li><span>I</span>AAS PLATFORMS - {VMware vRealize Automation,OpenStack}</li>
           <li><span>P</span>AAS PLATFORMS - {Cloud Foundry}</li>
+          <li><span>C</span>ONTAINER TECHNOLOGIES - {Docker,Kubernetes,Swarm,Mesosphere}</li>
           <li><span>S</span>DN - {NSX}</li>
           <li><span>L</span>ANGUAGES - {Golang,C++,Python,PHP}</li>
         </ul>
@@ -30,7 +31,7 @@ title: "About James65535"
         <li>Private IaaS Design and Implementation for a range of customers across verticals</li>
         <li>Public Cloud IaaS Design and Implementation for Service Providers</li>
         <li>SDLC Value-Chain Mapping</li>
-        <li>Developer Pipeline Automation</li>
+        <li>CI/CD Pipeline Automation</li>
       </ul>
       <p>Links to projects may be viewed <a href="{{ "/projects" | prepend:site.baseurl }}">here</a>.</p>
     </div> 
