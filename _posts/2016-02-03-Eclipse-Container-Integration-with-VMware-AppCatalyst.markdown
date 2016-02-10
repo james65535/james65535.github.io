@@ -6,7 +6,7 @@ categories: Infrastructure
 excerpt:
 tags: [VMware, IntelliJ, IDE, Docker, Containers, AppCatalyst, PhotonOS]
 image:
-  feature:
+  feature: "bar.jpg"
   teaser: "bar.jpg"
   thumb:
 ---
