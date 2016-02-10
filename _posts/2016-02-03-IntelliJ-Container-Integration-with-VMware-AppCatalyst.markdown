@@ -96,7 +96,7 @@ For this example, a simple Java Enterprise Project is used with the `Web Applica
     5. Specify the Docker API URL:  ```https://192.168.135.128:2376```
     6. Specifiy the `Certificates Folder` where you copied your client certificates to with SCP and hit `OK`
 
-        ![IntelliJ IDEA Cloud Pref](https://raw.githubusercontent.com/james65535/cna/master/intellijcloudpref.png?token=AK27TQidmdLWqCGMBbQTvfIDb7QaL3Dzks5Wutv5wA%3D%3D)
+        ![IntelliJ IDEA Cloud Pref](https://james65535.github.io/images/posts/intellijcloudpref.png)
 
 2. Configure your project specific settings:
     3. Create a folder under your project root folder named `Docker-out`
@@ -109,7 +109,7 @@ For this example, a simple Java Enterprise Project is used with the `Web Applica
     4. Your deployment artifacts will need to be placed in the same folder as your `Dockerfile`.  Navigate to `File` -> `Project Structure`
     10. Make sure your `JavaEEHelloWorld_war.war` artifact is selected and set your output directory to the `Docker-out` directory and hit `OK`
     
-        ![IntelliJ IDEA Project Folders](https://raw.githubusercontent.com/james65535/cna/master/folderlayout.png?token=AK27TfkT_S1CKYkYFJV9-7Pzymna45zQks5WutxhwA%3D%3D)
+        ![IntelliJ IDEA Project Folders](https://james65535.github.io/images/posts/folderlayout.png)
 
 3. Now the project `Run Configuration` needs to be configured for the deployment:
     11. Navigate to `Run` -> `Edit Configurations`, select `+` and add a new `Docker Deployment`
@@ -120,7 +120,7 @@ For this example, a simple Java Enterprise Project is used with the `Web Applica
     15. In the file-name box 'container-settings.json' should already be specified, hit `OK`
     16. Next to 'Before Launch' click the `+` symbol and select `Build Artifacts`
    
-        ![IntelliJ IDEA Project Run Config](https://raw.githubusercontent.com/james65535/cna/master/runconfig.png?token=AK27TUxebSxxTAleiOPClvwlS4lVaNIZks5WutyHwA%3D%3D)
+        ![IntelliJ IDEA Project Run Config](https://james65535.github.io/images/posts/runconfig.png)
 
     17. Choose your artifact and hit `OK` to both windows
     18. Finally navigate to `Run` -> `Run Docker Deploy`
