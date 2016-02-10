@@ -14,10 +14,12 @@ title: "About James65535"
     <div id="skills">
       <h2>Skills</h2>
       <h4 class="text-muted">Current Technologies of Interest:</h4>
-        <p> - <span>I</span>AAS PLATFORMS: <span>V</span>Mware vRealize Automation \ <span>O</span>penStack</p>
-        <p> - <span>P</span>AAS PLATFORMS: <span>C</span>loud Foundry <span></p>
-        <p> - <span>S</span>DN: <span>N</span>SX</p>
-        <p> - <span>L</span>ANGUAGES: <span>G</span>olang \ <span>C</span>++ \ <span>P</span>ython \ <span>P</span>HP</p>
+        <ul>
+          <li><span>I</span>AAS PLATFORMS - {VMware vRealize Automation,OpenStack}</li>
+          <li><span>P</span>AAS PLATFORMS - {Cloud Foundry}</li>
+          <li><span>S</span>DN - {NSX}</li>
+          <li><span>L</span>ANGUAGES - {Golang,C++,Python,PHP}</li>
+        </ul>
     </div>
   </div>
 
