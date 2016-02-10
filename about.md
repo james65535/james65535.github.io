@@ -25,7 +25,7 @@ title: "About James65535"
     <div id="experience">
       <h2>Experience</h2>
       <p>Private IaaS Design and Implementation for a range of customers across verticals</p>
-      <p>Public IaaS Design and Implementation</p>
+      <p>Public Cloud IaaS Design and Implementation for Service Providers</p>
       <p>SDLC Value-Chain Mapping</p>
       <p>Developer Pipeline Automation</p>
       <p>links to projects will be added <a href="{{ "/projects" | prepend:site.baseurl }}">here</a>.</p>
