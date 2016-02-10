@@ -17,9 +17,10 @@ title: "About James65535"
         <ul>
           <li><span>I</span>AAS PLATFORMS - {VMware vRealize Automation,OpenStack}</li>
           <li><span>P</span>AAS PLATFORMS - {Cloud Foundry}</li>
-          <li><span>C</span>ONTAINER TECHNOLOGIES - {Docker,Kubernetes,Swarm,Mesosphere}</li>
+          <li><span>C</span>ONFIGURATION MANAGEMENT - {Puppet,Chef,Ansible}</li>
+          <li><span>C</span>ONTAINER TECHNOLOGIES - {Docker,Kubernetes,Swarm,Mesos}</li>
           <li><span>S</span>DN - {NSX}</li>
-          <li><span>L</span>ANGUAGES - {Golang,C++,Python,PHP}</li>
+          <li><span>L</span>ANGUAGES - {Golang,C++,Python,PHP,PowerShell}</li>
         </ul>
     </div>
   </div>
