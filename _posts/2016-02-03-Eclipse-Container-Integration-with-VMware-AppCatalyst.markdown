@@ -7,7 +7,7 @@ excerpt:
 tags: [VMware, IntelliJ, IDE, Docker, Containers, AppCatalyst, PhotonOS]
 image:
   feature:
-  teaser:
+  teaser: "bar.jpg"
   thumb:
 ---
 # Introduction

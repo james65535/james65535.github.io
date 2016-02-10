@@ -7,7 +7,7 @@ excerpt:
 tags: [VMware, Go, Golang, IDE, Docker, Containers]
 image:
   feature: 
-  teaser:
+  teaser: "bar.jpg"
   thumb:
 ---
 
