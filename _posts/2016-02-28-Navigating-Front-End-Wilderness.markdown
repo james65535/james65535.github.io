@@ -15,7 +15,7 @@ Recently I've set myself a task of developing a web based game in order to get m
 
 For my application I wanted to work in a MVC pattern and to carve off the view layer as client side.  For this task I selected <a href="https://facebook.github.io/react/">React</a>.
 
-This is a challenge for me as the minimal amount of Javascript I know has been used to create Gluecode for automation tasks.  I decided to get a little bit of help by working with online video tutorials to help guide me but ran into some trouble through the combination of my lack of knowledge and the speed of innovation with Javascript libraries and frameworks.  The most problems I had was with <a href="https://facebook.github.io/react/docs/jsx-in-depth.html">JSX</a>.
+This is a challenge for me as the minimal amount of Javascript I know has been used to create Gluecode for automation tasks.  I decided to get a little bit of help by working with online video tutorials but ran into trouble through the combination of my lack of knowledge and the speed of innovation with Javascript libraries and frameworks.  The most problems I had was with <a href="https://facebook.github.io/react/docs/jsx-in-depth.html">JSX</a>.
 
 ## JSX
 Challenges:
