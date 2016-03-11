@@ -99,9 +99,11 @@ Nothing worked.  Finally in my browser when loading the React page I decided to 
 
 **Bingo!**
 
-Since I'm currently working in a local testing phase I simply added the following to my Go function for serving the JSON data and like magic my React application sprung to life!
+Since I'm currently working in a local testing phase I simply added the following to my Go function for serving the JSON data and like magic my React application sprang to life!
  
- `w.Header().Set("Access-Control-Allow-Origin", "*")`
+~~~ go
+w.Header().Set("Access-Control-Allow-Origin", "*")
+~~~
 
  A breath of fresh air!  Now time to move to a deeper depth :)
 
