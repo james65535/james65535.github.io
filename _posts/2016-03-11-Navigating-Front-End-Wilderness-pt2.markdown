@@ -87,17 +87,24 @@ As you can see I am reading in a source from a local webserver which contains JS
 ]
 ~~~
 
-The problem I experienced is that my array was not being processed and any code I placed inside the JQuery was not being processed such as `console.log("abc")`. I tried the following:
+The problem I experienced is that my array was not being processed and any code I placed inside the JQuery was not being processed such as `console.log("abc")`
 
-* Check webserver to verify JSON response is being issue correctly
-* Check webserver to verify it is receiving requests from the React application
-* Google my &^%#%@ ass off trying all manner of JQuery/React combinations to try to get the JSON data and parse it.
+I tried the following:
+
+* Checked webserver output to verify JSON response is being issued correctly
+* Checked webserver logs to verify its receiving requests from the React application
+* Googled my &^%#%@ ass off trying all manner of JQuery/React combinations to try to get the JSON data and parse it.
 
 Nothing worked.  Finally in my browser when loading the React page I decided to enable Firefox's Security logging.  I then received the following message:
+
 `Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at http://localhost:8000/. (Reason: CORS header 'Access-Control-Allow-Origin' missing).`
 
-Bingo!
+**Bingo!**
 
-Since I'm currently working in a local testing phase I added `w.Header().Set("Access-Control-Allow-Origin", "*")` to my Go function for serving the JSON data and like magic my React application sprung to life!  A breath of fresh air!  Now time to move to a deeper depth :)
+Since I'm currently working in a local testing phase I simply added the following to my Go function for serving the JSON data and like magic my React application sprung to life!
+ 
+ `w.Header().Set("Access-Control-Allow-Origin", "*")`
+
+ A breath of fresh air!  Now time to move to a deeper depth :)
 
 
