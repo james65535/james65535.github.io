@@ -1,0 +1,99 @@
+---
+layout: article
+title: Navigating the Front End Wilderness pt2
+modified:
+categories: Development
+excerpt: 
+tags: [Javascript, CORS, React, JQuery, Firefox]
+image:
+  feature: 
+  teaser: "bar.jpg"
+  thumb:
+---
+
+Its fun being out of your depth so long as you are stubborn enough to refuse to stop swimming!  Today I ran into major problems trying to setup a React script to query JSON from a site and parse it into something useable.  This is a first time for me and decided to use an existing <a href="https://facebook.github.io/react/tips/initial-ajax.html">tutorial</a> and mangle it according to my needs.
+
+I ended up with the following code:
+```
+var PlanetList = React.createClass({
+    getInitialState: function() {
+        return {Planets: []};
+    },
+
+    componentDidMount: function() {
+        this.serverRequest = $.getJSON(this.props.source, function (result) {
+            var parray = result.map(function(p) {
+                return {
+                    PlayerName: p.PlayerName,
+                    PlanetName: p.PlanetName
+                };
+            });
+            this.setState({Planets: parray});
+        }.bind(this));
+    },
+
+    renderPlanets: function(){
+        return this.state.Planets.map(function(planet){
+            return(
+                <li>
+                    Player {planet.PlayerName} has planet {planet.PlanetName}.
+                </li>)
+        });
+    },
+
+    componentWillUnmount: function() {
+        this.serverRequest.abort();
+    },
+
+    render: function() {
+        return(
+            <ul>
+                {this.renderPlanets()}
+            </ul>)
+    }
+});
+
+ReactDOM.render(
+    <PlanetList source="http://localhost:8000" />,
+    document.getElementById('container')
+);
+```
+
+As you can see I am reading in a source from a local webserver which contains JSON for an array of objects, example:
+```
+[
+  {
+    "ContainsPlanet": true,
+    "PlayerName": "Computer",
+    "PlayerTokens": 2,
+    "PlanetName": "g"
+  },
+  {
+    "ContainsPlanet": false,
+    "PlayerName": "",
+    "PlayerTokens": 0,
+    "PlanetName": ""
+  },
+  {
+    "ContainsPlanet": false,
+    "PlayerName": "",
+    "PlayerTokens": 0,
+    "PlanetName": ""
+  }
+]
+```
+
+The problem I experienced is that my array was not being processed, my values were not being populated and any code I placed inside the JQuery was not being processed such as `console.log("abc")`
+I tried the following
+* Check webserver to verify JSON response is being issue correctly
+* Check webserver to verify it is receiving requests from the React application
+* Google my &^%#%@ ass off trying all manner of JQuery/React combinations to try to get the JSON data and parse it.
+
+Nothing worked.  Finally in my browser when loading the React page I decided to enable Firefox's Security logging.  I then received the following message:
+`Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at http://localhost:8000/. (Reason: CORS header 'Access-Control-Allow-Origin' missing).`
+
+Bingo!
+
+Since I'm currently working in a local testing phase I added `w.Header().Set("Access-Control-Allow-Origin", "*")` to my Go function for serving the JSON data and like magic my React application sprung to life!  A breath of fresh air!  Now time to move to a deeper depth :)
+
+
