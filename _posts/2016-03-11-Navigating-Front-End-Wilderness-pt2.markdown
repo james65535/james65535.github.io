@@ -64,7 +64,7 @@ ReactDOM.render(
 
 As you can see I am reading in a source from a local webserver which contains JSON for an array of objects, example:
 
-~~~ json
+~~~ javascript
 [
   {
     "ContainsPlanet": true,
@@ -87,8 +87,7 @@ As you can see I am reading in a source from a local webserver which contains JS
 ]
 ~~~
 
-The problem I experienced is that my array was not being processed, my values were not being populated and any code I placed inside the JQuery was not being processed such as `console.log("abc")`
-I tried the following:
+The problem I experienced is that my array was not being processed and any code I placed inside the JQuery was not being processed such as `console.log("abc")`. I tried the following:
 
 * Check webserver to verify JSON response is being issue correctly
 * Check webserver to verify it is receiving requests from the React application
