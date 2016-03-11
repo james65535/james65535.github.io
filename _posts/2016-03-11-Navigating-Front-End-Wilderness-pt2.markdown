@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Navigating the Front End Wilderness pt2
+title: Navigating the Front End Wilderness part 2
 modified:
 categories: Development
 excerpt: 
@@ -17,7 +17,7 @@ Today I ran into major problems trying to setup a React script to query JSON fro
 
 I ended up with the following code:
 
-~~~ react
+~~~ javascript
 var PlanetList = React.createClass({
     getInitialState: function() {
         return {Planets: []};
@@ -91,7 +91,7 @@ The problem I experienced is that my array was not being processed and any code 
 
 * Checked webserver output to verify JSON response is being issued correctly
 * Checked webserver logs to verify its receiving requests from the React application
-* Googled my &^%#%@ ass off trying all manner of JQuery/React combinations to try to get the JSON data and parse it.
+* Googled my &^%#%@ ass off trying all manner of JQuery/React combinations to try to get the JSON data and parse it
 
 Nothing worked.  Finally in my browser when loading the React page I decided to enable Firefox's Security logging.  I then received the following message:
 
