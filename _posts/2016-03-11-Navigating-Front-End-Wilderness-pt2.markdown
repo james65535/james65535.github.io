@@ -1,6 +1,6 @@
 ---
 layout: article
-title: Navigating the Front End Wilderness part 2
+title: Navigating the Front End Wilderness Part 2
 modified:
 categories: Development
 excerpt: 
