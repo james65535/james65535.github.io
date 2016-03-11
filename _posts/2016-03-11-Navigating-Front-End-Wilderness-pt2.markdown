@@ -17,7 +17,7 @@ Today I ran into major problems trying to setup a React script to query JSON fro
 
 I ended up with the following code:
 
-~~~ javascript
+~~~ react
 var PlanetList = React.createClass({
     getInitialState: function() {
         return {Planets: []};
@@ -87,9 +87,7 @@ As you can see I am reading in a source from a local webserver which contains JS
 ]
 ~~~
 
-The problem I experienced is that my array was not being processed and any code I placed inside the JQuery was not being processed such as `console.log("abc")`
-
-I tried the following:
+The problem I experienced is that my array was not being processed and any code I placed inside the JQuery code block was not run.  I tried the following:
 
 * Checked webserver output to verify JSON response is being issued correctly
 * Checked webserver logs to verify its receiving requests from the React application
