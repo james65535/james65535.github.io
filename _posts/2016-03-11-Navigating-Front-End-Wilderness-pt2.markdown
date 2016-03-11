@@ -13,7 +13,7 @@ image:
 
 _Its fun being out of your depth so long as you are too stubborn to stop swimming!_
 
-Today I ran into major problems trying to setup a React script to query JSON from a site and parse it into something useable.  This is a first time for me and decided to use an existing <a href="https://facebook.github.io/react/tips/initial-ajax.html">tutorial</a> and mangle it according to my needs.
+Today I ran into major problems trying to setup a React script to query JSON from a site and parse it into something useable.  I'm new to this stuff and used an existing <a href="https://facebook.github.io/react/tips/initial-ajax.html">tutorial</a> to mangle according to my needs.
 
 I ended up with the following code:
 
@@ -64,7 +64,7 @@ ReactDOM.render(
 
 As you can see I am reading in a source from a local webserver which contains JSON for an array of objects, example:
 
-~~~ JSON
+~~~ json
 [
   {
     "ContainsPlanet": true,
@@ -88,7 +88,8 @@ As you can see I am reading in a source from a local webserver which contains JS
 ~~~
 
 The problem I experienced is that my array was not being processed, my values were not being populated and any code I placed inside the JQuery was not being processed such as `console.log("abc")`
-I tried the following
+I tried the following:
+
 * Check webserver to verify JSON response is being issue correctly
 * Check webserver to verify it is receiving requests from the React application
 * Google my &^%#%@ ass off trying all manner of JQuery/React combinations to try to get the JSON data and parse it.
