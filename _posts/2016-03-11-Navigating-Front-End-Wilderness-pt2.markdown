@@ -11,10 +11,13 @@ image:
   thumb:
 ---
 
-Its fun being out of your depth so long as you are stubborn enough to refuse to stop swimming!  Today I ran into major problems trying to setup a React script to query JSON from a site and parse it into something useable.  This is a first time for me and decided to use an existing <a href="https://facebook.github.io/react/tips/initial-ajax.html">tutorial</a> and mangle it according to my needs.
+_Its fun being out of your depth so long as you are too stubborn to stop swimming!_
+
+Today I ran into major problems trying to setup a React script to query JSON from a site and parse it into something useable.  This is a first time for me and decided to use an existing <a href="https://facebook.github.io/react/tips/initial-ajax.html">tutorial</a> and mangle it according to my needs.
 
 I ended up with the following code:
-~~~ Javascript
+
+~~~ javascript
 var PlanetList = React.createClass({
     getInitialState: function() {
         return {Planets: []};
@@ -60,6 +63,7 @@ ReactDOM.render(
 ~~~
 
 As you can see I am reading in a source from a local webserver which contains JSON for an array of objects, example:
+
 ~~~ JSON
 [
   {
