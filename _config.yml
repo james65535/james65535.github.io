@@ -38,15 +38,25 @@ titlecase: true
 
 # Site owner
 owner:
-  name:
+  name: James65535
   email:
   twitter:
   google:
     ad-client:
     ad-slot:
-  bio: 
+  bio: Solutions Architect
   avatar: bio-photo.jpg # 160x160 px image for author byline
   disqus-shortname:
+
+# Page authors
+authors:
+  James:
+    display_name: James65535
+    gravatar: bio-photo.png
+    email: 
+    web: http://james65535.github.io
+    twitter: James65535
+    github: James65535
 
 
 exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]

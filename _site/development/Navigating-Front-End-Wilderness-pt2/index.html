@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Navigating the Front End Wilderness Part 2 • James65535 Blog</title>
+    <meta name="description" content="Its fun being out of your depth so long as you are too stubborn to stop swimming!
+
+">
+    <meta name="keywords" content="Javascript, CORS, React, JQuery, Firefox">
+    
+    	<!-- Twitter Cards -->
+	<meta name="twitter:title" content="Navigating the Front End Wilderness Part 2">
+	<meta name="twitter:description" content="Its fun being out of your depth so long as you are too stubborn to stop swimming!
+
+">
+	
+	
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="http://James65535.github.io/images/">
+	
+	<!-- Open Graph -->
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="Navigating the Front End Wilderness Part 2">
+	<meta property="og:description" content="Its fun being out of your depth so long as you are too stubborn to stop swimming!
+
+">
+	<meta property="og:url" content="http://James65535.github.io/development/Navigating-Front-End-Wilderness-pt2/">
+	<meta property="og:site_name" content="James65535 Blog">
+
+    <link rel="canonical" href="http://James65535.github.io/development/Navigating-Front-End-Wilderness-pt2/">
+
+    <link href="http://James65535.github.io/atom.xml" type="application/atom+xml" rel="alternate" title="James65535 Blog Atom Feed">
+    <link href="http://James65535.github.io/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="stylesheet" href="http://James65535.github.io/css/main.css">
+    <!-- HTML5 Shiv and Media Query Support for IE -->
+    <!--[if lt IE 9]>
+      <script src="http://James65535.github.io/js/vendor/html5shiv.min.js"></script>
+      <script src="http://James65535.github.io/js/vendor/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+
+  <body id="js-body">
+    <!--[if lt IE 9]><div class="upgrade notice-warning"><strong>Your browser is quite old!</strong> Why not <a href="http://whatbrowser.org/">upgrade to a newer one</a> to better enjoy this site?</div><![endif]-->
+
+    <header id="masthead">
+  <div class="inner-wrap">
+    <a href="http://James65535.github.io/" class="site-title">James65535 Blog</a>
+    <nav role="navigation" class="menu top-menu">
+        <ul class="menu-item">
+	<li class="home"><a href="/">James65535 Blog</a></li>
+	
+    
+    <li><a href="http://James65535.github.io/" >Blog</a></li>
+  
+    
+    <li><a href="http://James65535.github.io/projects" >Projects</a></li>
+  
+    
+    <li><a href="http://James65535.github.io/about" >About Me</a></li>
+  
+</ul>
+    </nav>
+  </div><!-- /.inner-wrap -->
+</header><!-- /.masthead -->
+    <nav role="navigation" id="js-menu" class="sliding-menu-content">
+  <h5>James65535 Blog <span>Table of Contents</span></h5>
+  <ul class="menu-item">
+    <li>
+      <a href="http://James65535.github.io/">
+        
+        <div class="title">Blog</div>
+        <p class="excerpt">Various Technical Musings...</p>
+      </a>
+    </li><li>
+      <a href="http://James65535.github.io/projects">
+        
+        <div class="title">Projects</div>
+        <p class="excerpt">Various Science Experiments...</p>
+      </a>
+    </li><li>
+      <a href="http://James65535.github.io/about">
+        
+        <div class="title">About Me</div>
+        <p class="excerpt">Utter tosh...</p>
+      </a>
+    </li>
+  </ul>
+</nav>
+<button type="button" id="js-menu-trigger" class="sliding-menu-button lines-button x2" role="button" aria-label="Toggle Navigation">
+  <span class="nav-lines"></span>
+</button>
+
+<div id="js-menu-screen" class="menu-screen"></div>
+
+
+    <div id="page-wrapper">
+      <div id="main" role="main">
+	<article class="wrap" itemscope itemtype="http://schema.org/Article">
+		
+		
+  <nav class="breadcrumbs">
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="http://James65535.github.io" itemprop="url">
+        <span itemprop="title">Home</span>
+      </a> › 
+    <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+      <a href="http://James65535.github.io/Development/" itemprop="url">
+        <span itemprop="title">Development</span>
+      </a>
+    </span>
+  </nav><!-- /.breadcrumbs -->
+
+		<div class="page-title">
+			<h1>Navigating the Front End Wilderness Part 2</h1>
+		</div>
+		<div class="inner-wrap">
+			<div id="content" class="page-content" itemprop="articleBody">
+				<p><em>Its fun being out of your depth so long as you are too stubborn to stop swimming!</em></p>
+
+<p>Today I ran into major problems trying to setup a React script to query JSON from a site and parse it into something useable.  I’m new to this stuff and used an existing <a href="https://facebook.github.io/react/tips/initial-ajax.html">tutorial</a> to mangle according to my needs.</p>
+
+<p>I ended up with the following code:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">PlanetList</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+    <span class="na">getInitialState</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span><span class="na">Planets</span><span class="p">:</span> <span class="p">[]};</span>
+    <span class="p">},</span>
+
+    <span class="na">componentDidMount</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">serverRequest</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">source</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">parray</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">p</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="p">{</span>
+                    <span class="na">PlayerName</span><span class="p">:</span> <span class="nx">p</span><span class="p">.</span><span class="nx">PlayerName</span><span class="p">,</span>
+                    <span class="na">PlanetName</span><span class="p">:</span> <span class="nx">p</span><span class="p">.</span><span class="nx">PlanetName</span>
+                <span class="p">};</span>
+            <span class="p">});</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">Planets</span><span class="p">:</span> <span class="nx">parray</span><span class="p">});</span>
+        <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+    <span class="p">},</span>
+
+    <span class="na">renderPlanets</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">Planets</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">planet</span><span class="p">){</span>
+            <span class="k">return</span><span class="p">(</span>
+                <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
+                    <span class="nx">Player</span> <span class="p">{</span><span class="nx">planet</span><span class="p">.</span><span class="nx">PlayerName</span><span class="p">}</span> <span class="nx">has</span> <span class="nx">planet</span> <span class="p">{</span><span class="nx">planet</span><span class="p">.</span><span class="nx">PlanetName</span><span class="p">}.</span>
+                <span class="o">&lt;</span><span class="sr">/li&gt;</span><span class="err">)
+</span>        <span class="p">});</span>
+    <span class="p">},</span>
+
+    <span class="nx">componentWillUnmount</span><span class="err">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">serverRequest</span><span class="p">.</span><span class="nx">abort</span><span class="p">();</span>
+    <span class="p">},</span>
+
+    <span class="nx">render</span><span class="err">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+                <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">renderPlanets</span><span class="p">()}</span>
+            <span class="o">&lt;</span><span class="sr">/ul&gt;</span><span class="err">)
+</span>    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">PlanetList</span> <span class="nx">source</span><span class="o">=</span><span class="s2">"http://localhost:8000"</span> <span class="o">/&gt;</span><span class="p">,</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'container'</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre>
+</div>
+
+<p>As you can see I am reading in a source from a local webserver which contains JSON for an array of objects, example:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s2">"ContainsPlanet"</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"PlayerName"</span><span class="p">:</span> <span class="s2">"Computer"</span><span class="p">,</span>
+    <span class="s2">"PlayerTokens"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s2">"PlanetName"</span><span class="p">:</span> <span class="s2">"g"</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">"ContainsPlanet"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">"PlayerName"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+    <span class="s2">"PlayerTokens"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">"PlanetName"</span><span class="p">:</span> <span class="s2">""</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s2">"ContainsPlanet"</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">"PlayerName"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+    <span class="s2">"PlayerTokens"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">"PlanetName"</span><span class="p">:</span> <span class="s2">""</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre>
+</div>
+
+<p>The problem I experienced is that my array was not being processed and any code I placed inside the JQuery code block was not run.  I tried the following:</p>
+
+<ul>
+  <li>Checked webserver output to verify JSON response is being issued correctly</li>
+  <li>Checked webserver logs to verify its receiving requests from the React application</li>
+  <li>Googled my &amp;^%#%@ ass off trying all manner of JQuery/React combinations to try to get the JSON data and parse it</li>
+</ul>
+
+<p>Nothing worked.  Finally in my browser when loading the React page I decided to enable Firefox’s Security logging.  I then received the following message:</p>
+
+<p><code class="highlighter-rouge">Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at http://localhost:8000/. (Reason: CORS header 'Access-Control-Allow-Origin' missing).</code></p>
+
+<p><strong>Bingo!</strong></p>
+
+<p>Since I’m currently working in a local testing phase I simply added the following to my Go function for serving the JSON data and like magic my React application sprang to life!</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">w</span><span class="o">.</span><span class="n">Header</span><span class="p">()</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="s">"Access-Control-Allow-Origin"</span><span class="p">,</span><span class="x"> </span><span class="s">"*"</span><span class="p">)</span><span class="x">
+</span></code></pre>
+</div>
+
+<p>A breath of fresh air!  Now time to move to a deeper depth :)</p>
+
+
+				<hr />
+				<footer class="page-footer">
+					
+
+<div class="author-image">
+	<img src="http://James65535.github.io/images/bio-photo.jpg" alt="James65535">
+</div><!-- ./author-image -->
+<div class="author-content">
+	<h3 class="author-name" >Written by <span itemprop="author">James65535</span></h3>
+	<p class="author-bio">Solutions Architect</p>
+</div><!-- ./author-content -->
+					<br />
+<div class="inline-btn">
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=Navigating%20the%20Front%20End%20Wilderness%20Part%202&amp;url=http://James65535.github.io/development/Navigating-Front-End-Wilderness-pt2/&amp;via=" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://James65535.github.io/development/Navigating-Front-End-Wilderness-pt2/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=http://James65535.github.io/development/Navigating-Front-End-Wilderness-pt2/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
+</div><!-- /.share-this -->
+
+					<div class="page-meta">
+	<p>Updated <time datetime="2016-03-11T00:00:00Z" itemprop="datePublished">March 11, 2016</time></p>
+</div><!-- /.page-meta -->
+				</footer><!-- /.footer -->
+				<aside>
+					
+				</aside>
+			</div><!-- /.content -->
+		</div><!-- /.inner-wrap -->
+		
+	</article><!-- ./wrap -->
+</div><!-- /#main -->
+
+      <footer role="contentinfo" id="site-footer">
+	<nav role="navigation" class="menu bottom-menu">
+		<ul class="menu-item">
+		
+      
+			<li><a href="http://James65535.github.io" ></a></li>
+		
+		</ul>
+	</nav><!-- /.bottom-menu -->
+	<p class="copyright">&#169; 2016 <a href="http://James65535.github.io">James65535 Blog</a> powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> + <a href="http://mmistakes.github.io/skinny-bones-jekyll/" rel="nofollow">Skinny Bones</a>.</p>
+</footer>
+    </div>
+
+    <script src="http://James65535.github.io/js/vendor/jquery-1.9.1.min.js"></script>
+    <script src="http://James65535.github.io/js/main.js"></script>
+
+  </body>
+
+</html>

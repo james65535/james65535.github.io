@@ -3,27 +3,181 @@
 
   <title>James65535 Blog</title>
   <generator uri="https://github.com/jekyll/jekyll">Jekyll v3.1.1</generator>
-    <icon>/apple-touch-icon-precomposed.png</icon>
+    <icon>http://James65535.github.io/apple-touch-icon-precomposed.png</icon>
   <subtitle>A Data Point for Technical Musings</subtitle>
-  <link href="/atom.xml" rel="self"/>
-  <link href="/" rel="alternate" type="text/html"/>
-  <updated>2016-02-10T17:58:28+08:00</updated>
-  <id>/</id>
+  <link href="http://James65535.github.io/atom.xml" rel="self"/>
+  <link href="http://James65535.github.io/" rel="alternate" type="text/html"/>
+  <updated>2016-03-24T13:07:53+08:00</updated>
+  <id>http://James65535.github.io/</id>
   <author>
-    <name></name>
-    <uri>/</uri>
+    <name>James65535</name>
+    <uri>http://James65535.github.io/</uri>
     
   </author>
 
   
   <entry>
-    <title>Containers with Go Integration</title>
-    <link href="/infrastructure/containers-go-db/"/>
-    <updated>2016-02-03T00:00:00+08:00</updated>
-    <id>/infrastructure/containers-go-db</id>
+    <title>Navigating the Front End Wilderness Part 2</title>
+    <link href="http://James65535.github.io/development/Navigating-Front-End-Wilderness-pt2/"/>
+    <updated>2016-03-11T00:00:00+08:00</updated>
+    <id>http://James65535.github.io/development/Navigating-Front-End-Wilderness-pt2</id>
     <author>
-      <name></name>
-      <uri>/</uri>
+      <name>James65535</name>
+      <uri>http://James65535.github.io/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;&lt;em&gt;Its fun being out of your depth so long as you are too stubborn to stop swimming!&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Today I ran into major problems trying to setup a React script to query JSON from a site and parse it into something useable.  I’m new to this stuff and used an existing &lt;a href=&quot;https://facebook.github.io/react/tips/initial-ajax.html&quot;&gt;tutorial&lt;/a&gt; to mangle according to my needs.&lt;/p&gt;
+
+&lt;p&gt;I ended up with the following code:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PlanetList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;getInitialState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Planets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]};&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+    &lt;span class=&quot;na&quot;&gt;componentDidMount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;serverRequest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getJSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parray&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;PlayerName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;PlayerName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                    &lt;span class=&quot;na&quot;&gt;PlanetName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;PlanetName&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Planets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;parray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+    &lt;span class=&quot;na&quot;&gt;renderPlanets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Planets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;planet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;li&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;Player&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;planet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;PlayerName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;has&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;planet&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;planet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;PlanetName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}.&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/li&amp;gt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;)
+&lt;/span&gt;        &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;componentWillUnmount&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;serverRequest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;abort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;renderPlanets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/ul&amp;gt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;)
+&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;ReactDOM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;PlanetList&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://localhost:8000&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getElementById&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;container&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As you can see I am reading in a source from a local webserver which contains JSON for an array of objects, example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;ContainsPlanet&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;PlayerName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Computer&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;PlayerTokens&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;PlanetName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;g&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;ContainsPlanet&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;PlayerName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;PlayerTokens&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;PlanetName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;ContainsPlanet&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;PlayerName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;PlayerTokens&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;PlanetName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The problem I experienced is that my array was not being processed and any code I placed inside the JQuery code block was not run.  I tried the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Checked webserver output to verify JSON response is being issued correctly&lt;/li&gt;
+  &lt;li&gt;Checked webserver logs to verify its receiving requests from the React application&lt;/li&gt;
+  &lt;li&gt;Googled my &amp;amp;^%#%@ ass off trying all manner of JQuery/React combinations to try to get the JSON data and parse it&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Nothing worked.  Finally in my browser when loading the React page I decided to enable Firefox’s Security logging.  I then received the following message:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at http://localhost:8000/. (Reason: CORS header &#39;Access-Control-Allow-Origin&#39; missing).&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Bingo!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Since I’m currently working in a local testing phase I simply added the following to my Go function for serving the JSON data and like magic my React application sprang to life!&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Access-Control-Allow-Origin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;x&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;x&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;A breath of fresh air!  Now time to move to a deeper depth :)&lt;/p&gt;
+
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Navigating the Front End Wilderness</title>
+    <link href="http://James65535.github.io/development/Navigating-Front-End-Wilderness/"/>
+    <updated>2016-02-28T00:00:00+08:00</updated>
+    <id>http://James65535.github.io/development/Navigating-Front-End-Wilderness</id>
+    <author>
+      <name>James65535</name>
+      <uri>http://James65535.github.io/</uri>
+      
+    </author>
+    <content type="html">
+      
+      &lt;p&gt;Recently I’ve set myself a task of developing a web based game in order to get myself up to speed on modern development patterns and technologies… something I haven’t done since I worked with PHP over a decade ago.&lt;/p&gt;
+
+&lt;p&gt;For my application I wanted to work in a MVC pattern and to carve off the view layer as client side.  For this task I selected &lt;a href=&quot;https://facebook.github.io/react/&quot;&gt;React&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is a challenge for me as the minimal amount of Javascript I know has been used to create Gluecode for automation tasks.  I decided to get a little bit of help by working with online video tutorials but ran into trouble through the combination of my lack of knowledge and the speed of innovation with Javascript libraries and frameworks.  The most problems I had was with &lt;a href=&quot;https://facebook.github.io/react/docs/jsx-in-depth.html&quot;&gt;JSX&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;jsx&quot;&gt;JSX&lt;/h2&gt;
+&lt;p&gt;Challenges:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Lack of understanding about JSX in general&lt;/li&gt;
+  &lt;li&gt;Lack of understanding about transpiling&lt;/li&gt;
+  &lt;li&gt;Changes to the React framework since the creation of the video tutorials&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This manifested it’s self when I decided to take the small working app I had create in &lt;a href=&quot;https://plnkr.co/&quot;&gt;Plunker&lt;/a&gt; and bring it into my &lt;a href=&quot;https://www.jetbrains.com/idea/&quot;&gt;IDE&lt;/a&gt;.  All of a sudden when I browsed to the HTML file locally from Firefox I was getting none of the expected elements to display on the page.  I went into a mad fury researching the above elements pages, creating more tabs in my browser than stars in the sky, and by the end it was a quick solution.&lt;/p&gt;
+
+&lt;p&gt;The crux of the problem was simple.  Somewhere between the time the creation of the video tutorials and now, React had moved away from the JSX Transform tools and adopted &lt;a href=&quot;https://babeljs.io/&quot;&gt;Babel&lt;/a&gt;.  Details on this move can be found &lt;a href=&quot;https://facebook.github.io/react/blog/2015/06/12/deprecating-jstransform-and-react-tools.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Turns out all I had to do was place a &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;script&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt; reference in my HTML to link in Babel, example:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;I feel like a fish out of water with this Web Front End work!&lt;/p&gt;
+
+    </content>
+  </entry>
+  
+  <entry>
+    <title>Containers with Go Integration</title>
+    <link href="http://James65535.github.io/infrastructure/containers-go-db/"/>
+    <updated>2016-02-03T00:00:00+08:00</updated>
+    <id>http://James65535.github.io/infrastructure/containers-go-db</id>
+    <author>
+      <name>James65535</name>
+      <uri>http://James65535.github.io/</uri>
       
     </author>
     <content type="html">
@@ -35,16 +189,16 @@
   
   <entry>
     <title>IntelliJ Container Integration with VMware AppCatalyst</title>
-    <link href="/infrastructure/IntelliJ-Container-Integration-with-VMware-AppCatalyst/"/>
+    <link href="http://James65535.github.io/infrastructure/IntelliJ-Container-Integration-with-VMware-AppCatalyst/"/>
     <updated>2016-02-03T00:00:00+08:00</updated>
-    <id>/infrastructure/IntelliJ-Container-Integration-with-VMware-AppCatalyst</id>
+    <id>http://James65535.github.io/infrastructure/IntelliJ-Container-Integration-with-VMware-AppCatalyst</id>
     <author>
-      <name></name>
-      <uri>/</uri>
+      <name>James65535</name>
+      <uri>http://James65535.github.io/</uri>
       
     </author>
     <content type="html">
-      
+      &lt;img src=&quot;http://James65535.github.io/images/bar.jpg&quot;&gt;&lt;br/&gt;
       &lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;The past year has seen tremendous growth and support for Containerization within the Development space.  Containers provide a fast and easy way to fire up a multitude of different development, test, and even production environments.&lt;/p&gt;
 
@@ -163,7 +317,7 @@
       &lt;li&gt;
         &lt;p&gt;Specifiy the &lt;code class=&quot;highlighter-rouge&quot;&gt;Certificates Folder&lt;/code&gt; where you copied your client certificates to with SCP and hit &lt;code class=&quot;highlighter-rouge&quot;&gt;OK&lt;/code&gt;&lt;/p&gt;
 
-        &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/james65535/cna/master/intellijcloudpref.png?token=AK27TQidmdLWqCGMBbQTvfIDb7QaL3Dzks5Wutv5wA%3D%3D&quot; alt=&quot;IntelliJ IDEA Cloud Pref&quot; /&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;img src=&quot;https://james65535.github.io/images/posts/intellijcloudpref.png&quot; alt=&quot;IntelliJ IDEA Cloud Pref&quot; /&gt;&lt;/p&gt;
       &lt;/li&gt;
     &lt;/ol&gt;
   &lt;/li&gt;
@@ -182,7 +336,7 @@
       &lt;li&gt;
         &lt;p&gt;Make sure your &lt;code class=&quot;highlighter-rouge&quot;&gt;JavaEEHelloWorld_war.war&lt;/code&gt; artifact is selected and set your output directory to the &lt;code class=&quot;highlighter-rouge&quot;&gt;Docker-out&lt;/code&gt; directory and hit &lt;code class=&quot;highlighter-rouge&quot;&gt;OK&lt;/code&gt;&lt;/p&gt;
 
-        &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/james65535/cna/master/folderlayout.png?token=AK27TfkT_S1CKYkYFJV9-7Pzymna45zQks5WutxhwA%3D%3D&quot; alt=&quot;IntelliJ IDEA Project Folders&quot; /&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;img src=&quot;https://james65535.github.io/images/posts/folderlayout.png&quot; alt=&quot;IntelliJ IDEA Project Folders&quot; /&gt;&lt;/p&gt;
       &lt;/li&gt;
     &lt;/ol&gt;
   &lt;/li&gt;
@@ -197,7 +351,7 @@
       &lt;li&gt;
         &lt;p&gt;Next to ‘Before Launch’ click the &lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; symbol and select &lt;code class=&quot;highlighter-rouge&quot;&gt;Build Artifacts&lt;/code&gt;&lt;/p&gt;
 
-        &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/james65535/cna/master/runconfig.png?token=AK27TUxebSxxTAleiOPClvwlS4lVaNIZks5WutyHwA%3D%3D&quot; alt=&quot;IntelliJ IDEA Project Run Config&quot; /&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;img src=&quot;https://james65535.github.io/images/posts/runconfig.png&quot; alt=&quot;IntelliJ IDEA Project Run Config&quot; /&gt;&lt;/p&gt;
       &lt;/li&gt;
       &lt;li&gt;Choose your artifact and hit &lt;code class=&quot;highlighter-rouge&quot;&gt;OK&lt;/code&gt; to both windows&lt;/li&gt;
       &lt;li&gt;Finally navigate to &lt;code class=&quot;highlighter-rouge&quot;&gt;Run&lt;/code&gt; -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Run Docker Deploy&lt;/code&gt;&lt;/li&gt;
@@ -252,16 +406,16 @@
   
   <entry>
     <title>Eclipse Container Integration with VMware AppCatalyst</title>
-    <link href="/infrastructure/Eclipse-Container-Integration-with-VMware-AppCatalyst/"/>
+    <link href="http://James65535.github.io/infrastructure/Eclipse-Container-Integration-with-VMware-AppCatalyst/"/>
     <updated>2016-02-03T00:00:00+08:00</updated>
-    <id>/infrastructure/Eclipse-Container-Integration-with-VMware-AppCatalyst</id>
+    <id>http://James65535.github.io/infrastructure/Eclipse-Container-Integration-with-VMware-AppCatalyst</id>
     <author>
-      <name></name>
-      <uri>/</uri>
+      <name>James65535</name>
+      <uri>http://James65535.github.io/</uri>
       
     </author>
     <content type="html">
-      
+      &lt;img src=&quot;http://James65535.github.io/images/bar.jpg&quot;&gt;&lt;br/&gt;
       &lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;The past year has seen tremendous growth and support for Containerization within the Development space.  Containers provide a fast and easy way to fire up a multitude of different development, test, and even production environments.&lt;/p&gt;
 
@@ -442,23 +596,6 @@
   &lt;li&gt;AppCatalyst cannot be used while VMware Fusion is running&lt;/li&gt;
   &lt;li&gt;Certificate configuration uses 192.168.135.128 address, if the target Photon instance is not the first instance powered on it will have a different IP address.  Ensure the target Photon instance is the first instance powered on to maintain a consistent IP address&lt;/li&gt;
 &lt;/ul&gt;
-
-    </content>
-  </entry>
-  
-  <entry>
-    <title>First Post</title>
-    <link href="/general/FirstPost/"/>
-    <updated>2016-02-01T12:01:35+08:00</updated>
-    <id>/general/FirstPost</id>
-    <author>
-      <name></name>
-      <uri>/</uri>
-      
-    </author>
-    <content type="html">
-      
-      &lt;p&gt;Hello is this thing on?!&lt;/p&gt;
 
     </content>
   </entry>

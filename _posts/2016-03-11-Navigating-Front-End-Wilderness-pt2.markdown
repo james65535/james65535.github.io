@@ -9,6 +9,7 @@ image:
   feature: 
   teaser: "bar.jpg"
   thumb:
+post-author: James
 ---
 
 _Its fun being out of your depth so long as you are too stubborn to stop swimming!_
