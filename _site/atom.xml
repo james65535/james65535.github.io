@@ -7,7 +7,7 @@
   <subtitle>A Data Point for Technical Musings</subtitle>
   <link href="http://James65535.github.io/atom.xml" rel="self"/>
   <link href="http://James65535.github.io/" rel="alternate" type="text/html"/>
-  <updated>2016-03-24T14:15:05+08:00</updated>
+  <updated>2016-03-24T16:45:47+08:00</updated>
   <id>http://James65535.github.io/</id>
   <author>
     <name>James65535</name>
@@ -171,10 +171,10 @@
   </entry>
   
   <entry>
-    <title>Containers with Go Integration</title>
-    <link href="http://James65535.github.io/infrastructure/containers-go-db/"/>
+    <title>Docker Integration with IntelliJ IDEA</title>
+    <link href="http://James65535.github.io/development/containers-go-db/"/>
     <updated>2016-02-03T00:00:00+08:00</updated>
-    <id>http://James65535.github.io/infrastructure/containers-go-db</id>
+    <id>http://James65535.github.io/development/containers-go-db</id>
     <author>
       <name>James65535</name>
       <uri>http://James65535.github.io/</uri>
@@ -183,6 +183,182 @@
     <content type="html">
       
       &lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;Often times you may have a need to spin up multiple machines to test out an application you are developing.  Frequently this can lead you to install all manner of software and frameworks on your local laptop.  Overtime this may lead to application conflicts or just a plain mess.  With IntelliJ IDEA and Docker, it’s now quite easy to deploy your application into a Docker container or containers directly from your IDE with the click of a button.&lt;/p&gt;
+
+&lt;h2 id=&quot;system-requirements&quot;&gt;System Requirements&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;IntelliJ IDEA Ultimate Edition: 14.1 or newer&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;pre-requisites&quot;&gt;Pre-requisites&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;A Linux OS with Docker Engine.  This may be running remotely, within VMware Fusion/Workstation, Docker Machine, etc…&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;It is recommended to secure your Docker Daemon for listening on a secure TCP Port:&lt;/p&gt;
+    &lt;ol&gt;
+      &lt;li&gt;Follow &lt;a href=&quot;https://docs.docker.com/articles/https/&quot;&gt;the Protect the Docker Daemon Guide&lt;/a&gt; for creating the relevant certificates, you do not need to perform the “Secure by Default” section&lt;/li&gt;
+      &lt;li&gt;You should now have all the certificates and keys required to setup secure access to Docker from your host machine&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;prep-work&quot;&gt;Prep-work&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;From your host machine get the IP address of your Photon instance:&lt;/p&gt;
+
+    &lt;div class=&quot;bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; appcatalyst guest getip &amp;lt;replace with vm name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Copy the client certificates from your Docker Host to your preferred folder on your development machine, in this case: /home/DockerCerts/:&lt;/p&gt;
+
+    &lt;div class=&quot;bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; scp username@192.168.135.128:&quot;ca.pem cert.pem ca.pem key.pem&quot; ~/DockerCerts/
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;SSH to your Photon instance from your host machine:&lt;/p&gt;
+
+    &lt;div class=&quot;bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; ssh -i /opt/vmware/appcatalyst/etc/appcatalyst_insecure_ssh_key photon@192.168.135.128
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Optional: Move your server side certificates to a more appropriate folder:&lt;/p&gt;
+
+    &lt;div class=&quot;bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; sudo cp ~/{ca.pem,server-cert.pem,server-key.pem} /etc/ssl/certs/
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The Docker service in Photon is configured through SystemD.  From your Photon SSH connection, modify your service file to change from Unix Socket to a secure TCP connection:&lt;/p&gt;
+
+    &lt;div class=&quot;bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; sudo nano /lib/systemd/system/docker.service
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Find the following line:&lt;/p&gt;
+
+    &lt;div class=&quot;bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; ExecStart=/bin/docker -d -s overlay
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Replace it with the following line:&lt;/p&gt;
+
+    &lt;div class=&quot;bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; ExecStart=/bin/docker -d -s overlay --tlsverify --tlscacert=/etc/ssl/certs/ca.pem --tlscert=/etc/ssl/certs/server-cert.pem --tlskey=/etc/ssl/certs/server-key.pem -H=0.0.0.0:2376
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Reboot your Photon instance or reload and restart Docker using systemctl:&lt;/p&gt;
+
+    &lt;div class=&quot;bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; sudo shutdown -r now
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+
+    &lt;p&gt;Or&lt;/p&gt;
+
+    &lt;div class=&quot;bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; sudo systemctl daemon-reload
+ sudo systemctl restart docker
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;intellij-idea-configuration&quot;&gt;IntelliJ IDEA Configuration&lt;/h1&gt;
+&lt;p&gt;For this example, a simple Java Enterprise Project is used with the &lt;code class=&quot;highlighter-rouge&quot;&gt;Web Application&lt;/code&gt; framework deployed as a Web Application Archive.  Please feel free to create a new project, use an existing one, or follow the steps in the tutorial from JetBrains: https://www.jetbrains.com/idea/help/developing-a-java-ee-application.html&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Setup the Docker plug-in:
+    &lt;ol&gt;
+      &lt;li&gt;Navigate to &lt;code class=&quot;highlighter-rouge&quot;&gt;IntelliJ IDEA&lt;/code&gt; -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Preferences&lt;/code&gt; -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Build, Execution, Deployment&lt;/code&gt; -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Clouds&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Select the &lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; symbol and add &lt;code class=&quot;highlighter-rouge&quot;&gt;Docker&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Specificy name as &lt;code class=&quot;highlighter-rouge&quot;&gt;Docker&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Specify the Docker API URL:  &lt;code class=&quot;highlighter-rouge&quot;&gt;https://192.168.135.128:2376&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Specifiy the &lt;code class=&quot;highlighter-rouge&quot;&gt;Certificates Folder&lt;/code&gt; where you copied your client certificates to with SCP and hit &lt;code class=&quot;highlighter-rouge&quot;&gt;OK&lt;/code&gt;&lt;/p&gt;
+
+        &lt;p&gt;&lt;img src=&quot;https://james65535.github.io/images/posts/intellijcloudpref.png&quot; alt=&quot;IntelliJ IDEA Cloud Pref&quot; /&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Configure your project specific settings:
+    &lt;ol&gt;
+      &lt;li&gt;Create a folder under your project root folder named &lt;code class=&quot;highlighter-rouge&quot;&gt;Docker-out&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;You will need to create a Dockerfile to contain the commands which are issued to Docker during image build.  Within the &lt;code class=&quot;highlighter-rouge&quot;&gt;Docker-out&lt;/code&gt; directory, create a new file called ‘Dockerfile’ and enter the following commands.  The first line specificies the base image and the second specifices the artifact you wish to add to the new image:&lt;/p&gt;
+
+        &lt;div class=&quot;bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; FROM jboss/wildfly
+ ADD JavaEEHelloWorld_war.war /opt/jboss/wildfly/standalone/deployments/
+&lt;/code&gt;&lt;/pre&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Your deployment artifacts will need to be placed in the same folder as your &lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;.  Navigate to &lt;code class=&quot;highlighter-rouge&quot;&gt;File&lt;/code&gt; -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Project Structure&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Make sure your &lt;code class=&quot;highlighter-rouge&quot;&gt;JavaEEHelloWorld_war.war&lt;/code&gt; artifact is selected and set your output directory to the &lt;code class=&quot;highlighter-rouge&quot;&gt;Docker-out&lt;/code&gt; directory and hit &lt;code class=&quot;highlighter-rouge&quot;&gt;OK&lt;/code&gt;&lt;/p&gt;
+
+        &lt;p&gt;&lt;img src=&quot;https://james65535.github.io/images/posts/folderlayout.png&quot; alt=&quot;IntelliJ IDEA Project Folders&quot; /&gt;&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Now the project &lt;code class=&quot;highlighter-rouge&quot;&gt;Run Configuration&lt;/code&gt; needs to be configured for the deployment:
+    &lt;ol&gt;
+      &lt;li&gt;Navigate to &lt;code class=&quot;highlighter-rouge&quot;&gt;Run&lt;/code&gt; -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Edit Configurations&lt;/code&gt;, select &lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; and add a new &lt;code class=&quot;highlighter-rouge&quot;&gt;Docker Deployment&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Specify the name as &lt;code class=&quot;highlighter-rouge&quot;&gt;Docker Deployment&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Ensure Deployment specifies &lt;code class=&quot;highlighter-rouge&quot;&gt;Docker-Out/Dockerfile&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Choose a name for the container name, e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;My-WebApp&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Next to &lt;code class=&quot;highlighter-rouge&quot;&gt;Container Settings&lt;/code&gt; click the Green Arrow symbol and create a folder within your project folder labeled &lt;code class=&quot;highlighter-rouge&quot;&gt;Docker-Settings&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;In the file-name box ‘container-settings.json’ should already be specified, hit &lt;code class=&quot;highlighter-rouge&quot;&gt;OK&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;Next to ‘Before Launch’ click the &lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt; symbol and select &lt;code class=&quot;highlighter-rouge&quot;&gt;Build Artifacts&lt;/code&gt;&lt;/p&gt;
+
+        &lt;p&gt;&lt;img src=&quot;https://james65535.github.io/images/posts/runconfig.png&quot; alt=&quot;IntelliJ IDEA Project Run Config&quot; /&gt;&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Choose your artifact and hit &lt;code class=&quot;highlighter-rouge&quot;&gt;OK&lt;/code&gt; to both windows&lt;/li&gt;
+      &lt;li&gt;Finally navigate to &lt;code class=&quot;highlighter-rouge&quot;&gt;Run&lt;/code&gt; -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Run Docker Deploy&lt;/code&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;IntelliJ IDEA will now build your artifact, communicate to your Photon hosted Docker service, start up a new Container, and deploy your artifact to the container.  If this is the first time you have pulled down the Docker base image then it may take 5-15 minutes to download depending on your internet connection.&lt;/p&gt;
+
+&lt;h1 id=&quot;intellij-idea-post-deployment-test&quot;&gt;IntelliJ IDEA Post Deployment Test&lt;/h1&gt;
+&lt;ol&gt;
+  &lt;li&gt;To test a successful build and deploy from IntelliJ IDEA to your Docker container you can try one of the following steps:
+    &lt;ol&gt;
+      &lt;li&gt;In your Web browser, navigate to ‘http://192.168.135.128:18080/JavaEEHelloWorld_war/’ to see your WebApp successfully running&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;SSH to your Photon Instance and issue the Docker command to list running containers.  You should see ‘My-WebApp’ under the &lt;code class=&quot;highlighter-rouge&quot;&gt;Names&lt;/code&gt; column:&lt;/p&gt;
+
+        &lt;div class=&quot;bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; ssh -i /opt/vmware/appcatalyst/etc/appcatalyst_insecure_ssh_key photon@&amp;lt;insert guest ip here&amp;gt;
+ sudo docker --tlsverify --tlscacert=ca.pem --tlscert=cert.pem --tlskey=key.pem -H=&amp;lt;insert guest ip here&amp;gt;:2376 ps
+&lt;/code&gt;&lt;/pre&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;whats-next&quot;&gt;What’s Next&lt;/h1&gt;
+&lt;p&gt;So now you’ve configured a basic project within your IDE to work with VMware AppCatalyst, Photon, and Docker containers.  You can now look to implement these settings within your own project work and deploy more complex environments with the click of a button!&lt;/p&gt;
+
+&lt;h1 id=&quot;appendix&quot;&gt;Appendix&lt;/h1&gt;
+
+&lt;h2 id=&quot;useful-links&quot;&gt;Useful Links&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.jetbrains.com/idea/help/developing-a-java-ee-application.html&quot;&gt;JetBrains guide for creating a Java EE Application&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.vmware.com/cloudnative&quot;&gt;VMware Cloud Native Apps Splash Page&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/vmware/photon&quot;&gt;VMware Project Photon Github&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.docker.com/reference/builder/&quot;&gt;Docker Docs for getting started with the Dockerfile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.docker.com/articles/https/&quot;&gt;Docker Docs article for securing Docker Service with HTTPS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.jetbrains.com/idea/2015/03/docker-support-in-intellij-idea-14-1/&quot;&gt;Jetbrains blog for configuring IntelliJ IDEA Docker Plug-in&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
     </content>
   </entry>

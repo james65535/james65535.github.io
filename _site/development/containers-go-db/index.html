@@ -2,37 +2,37 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>IntelliJ Container Integration with VMware AppCatalyst • James65535 Blog</title>
+    <title>Docker Integration with IntelliJ IDEA • James65535 Blog</title>
     <meta name="description" content="Introduction
-The past year has seen tremendous growth and support for Containerization within the Development space.  Containers provide a fast and easy way to fire up a multitude of different development, test, and even production environments.
+Often times you may have a need to spin up multiple machines to test out an application you are developing.  Frequently this can lead you to install all manner of software and frameworks on your local laptop.  Overtime this may lead to application conflicts or just a plain mess.  With IntelliJ IDEA and Docker, it’s now quite easy to deploy your application into a Docker container or containers directly from your IDE with the click of a button.
 
 ">
-    <meta name="keywords" content="VMware, IntelliJ, IDE, Docker, Containers, AppCatalyst PhotonOS">
+    <meta name="keywords" content="VMware, Go, Golang, IDE, Docker, Containers, IntelliJ, IDEA">
     
     	<!-- Twitter Cards -->
-	<meta name="twitter:title" content="IntelliJ Container Integration with VMware AppCatalyst">
+	<meta name="twitter:title" content="Docker Integration with IntelliJ IDEA">
 	<meta name="twitter:description" content="Introduction
-The past year has seen tremendous growth and support for Containerization within the Development space.  Containers provide a fast and easy way to fire up a multitude of different development, test, and even production environments.
+Often times you may have a need to spin up multiple machines to test out an application you are developing.  Frequently this can lead you to install all manner of software and frameworks on your local laptop.  Overtime this may lead to application conflicts or just a plain mess.  With IntelliJ IDEA and Docker, it’s now quite easy to deploy your application into a Docker container or containers directly from your IDE with the click of a button.
 
 ">
 	<meta name="twitter:site" content="@James65535">
 	<meta name="twitter:creator" content="@James65535">
 	
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:image" content="http://James65535.github.io/images/bar.jpg">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:image" content="http://James65535.github.io/images/">
 	
 	<!-- Open Graph -->
 	<meta property="og:locale" content="en">
 	<meta property="og:type" content="article">
-	<meta property="og:title" content="IntelliJ Container Integration with VMware AppCatalyst">
+	<meta property="og:title" content="Docker Integration with IntelliJ IDEA">
 	<meta property="og:description" content="Introduction
-The past year has seen tremendous growth and support for Containerization within the Development space.  Containers provide a fast and easy way to fire up a multitude of different development, test, and even production environments.
+Often times you may have a need to spin up multiple machines to test out an application you are developing.  Frequently this can lead you to install all manner of software and frameworks on your local laptop.  Overtime this may lead to application conflicts or just a plain mess.  With IntelliJ IDEA and Docker, it’s now quite easy to deploy your application into a Docker container or containers directly from your IDE with the click of a button.
 
 ">
-	<meta property="og:url" content="http://James65535.github.io/infrastructure/IntelliJ-Container-Integration-with-VMware-AppCatalyst/">
+	<meta property="og:url" content="http://James65535.github.io/development/containers-go-db/">
 	<meta property="og:site_name" content="James65535 Blog">
 
-    <link rel="canonical" href="http://James65535.github.io/infrastructure/IntelliJ-Container-Integration-with-VMware-AppCatalyst/">
+    <link rel="canonical" href="http://James65535.github.io/development/containers-go-db/">
 
     <link href="http://James65535.github.io/atom.xml" type="application/atom+xml" rel="alternate" title="James65535 Blog Atom Feed">
     <link href="http://James65535.github.io/sitemap.xml" type="application/xml" rel="sitemap" title="Sitemap">
@@ -109,13 +109,6 @@ The past year has seen tremendous growth and support for Containerization within
       <div id="main" role="main">
 	<article class="wrap" itemscope itemtype="http://schema.org/Article">
 		
-		<div class="page-feature">
-			<div class="page-image">
-				<img src="http://James65535.github.io/images/bar.jpg" class="page-feature-image" alt="IntelliJ Container Integration with VMware AppCatalyst" itemprop="image">
-				
-			</div><!-- /.page-image -->
-		</div><!-- /.page-feature -->
-		
 		
   <nav class="breadcrumbs">
     <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
@@ -123,48 +116,32 @@ The past year has seen tremendous growth and support for Containerization within
         <span itemprop="title">Home</span>
       </a> › 
     <span itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
-      <a href="http://James65535.github.io/Infrastructure/" itemprop="url">
-        <span itemprop="title">Infrastructure</span>
+      <a href="http://James65535.github.io/Development/" itemprop="url">
+        <span itemprop="title">Development</span>
       </a>
     </span>
   </nav><!-- /.breadcrumbs -->
 
 		<div class="page-title">
-			<h1>IntelliJ Container Integration with VMware AppCatalyst</h1>
+			<h1>Docker Integration with IntelliJ IDEA</h1>
 		</div>
 		<div class="inner-wrap">
 			<div id="content" class="page-content" itemprop="articleBody">
 				<h1 id="introduction">Introduction</h1>
-<p>The past year has seen tremendous growth and support for Containerization within the Development space.  Containers provide a fast and easy way to fire up a multitude of different development, test, and even production environments.</p>
-
-<p>Unfortunately Docker does not run natively on OSX, an abstraction layer is needed to create a Container Runtime Host for the Docker service to run on.  Enter VMware AppCatalyst and Project Photon:</p>
-
-<ul>
-  <li><strong>Project Photon:</strong> A lightweight purpose built Linux Container Runtime Host currently released as an Open Source Tech Preview project by VMware</li>
-  <li><strong>AppCatalyst:</strong> A CLI/RESTful API driven lightweight hypervisor for OSX which provides a perfect environment for running Photon instances hosting Docker services</li>
-</ul>
-
-<p>The goal of this article is to walk the user through the initial configuration steps required to integrate VMware AppCatalyst with IntelliJ IDEA.  This integration will provide the user a seemles method for automating the delivery of containers and deploying their artifacts right on their laptop without having to perform any manual steps outside of the IDE.  Just tell your IDE to build your App and you’re ready to go!</p>
-
-<h2 id="target-audience">Target Audience</h2>
-<p>MAC OSX users who have at least a basic knowledge of Docker and reasonable knowledge of JetBrains IntelliJ IDEA.</p>
+<p>Often times you may have a need to spin up multiple machines to test out an application you are developing.  Frequently this can lead you to install all manner of software and frameworks on your local laptop.  Overtime this may lead to application conflicts or just a plain mess.  With IntelliJ IDEA and Docker, it’s now quite easy to deploy your application into a Docker container or containers directly from your IDE with the click of a button.</p>
 
 <h2 id="system-requirements">System Requirements</h2>
 <ul>
-  <li>AppCatalyst: OSX 10.9.4 or newer</li>
   <li>IntelliJ IDEA Ultimate Edition: 14.1 or newer</li>
 </ul>
 
 <h1 id="pre-requisites">Pre-requisites</h1>
 <ol>
-  <li>Install VMware AppCatalyst:
-    <ol>
-      <li>Follow the directions from the <a href="https://communities.vmware.com/docs/DOC-29885">Getting Started guide</a></li>
-      <li>You should now be able to fire up a PhotonOS VM with AppCatalyst and SSH into the Photon shell prompt</li>
-      <li>Leave your PhotonOS VM powered on</li>
-    </ol>
+  <li>
+    <p>A Linux OS with Docker Engine.  This may be running remotely, within VMware Fusion/Workstation, Docker Machine, etc…</p>
   </li>
-  <li>It is recommended to secure your Docker Daemon for listening on a secure TCP Port:
+  <li>
+    <p>It is recommended to secure your Docker Daemon for listening on a secure TCP Port:</p>
     <ol>
       <li>Follow <a href="https://docs.docker.com/articles/https/">the Protect the Docker Daemon Guide</a> for creating the relevant certificates, you do not need to perform the “Secure by Default” section</li>
       <li>You should now have all the certificates and keys required to setup secure access to Docker from your host machine</li>
@@ -182,9 +159,9 @@ The past year has seen tremendous growth and support for Containerization within
     </div>
   </li>
   <li>
-    <p>Copy the client certificates from the Photon instance to your preferred folder on your host machine, in this case/home/DockerCerts/:</p>
+    <p>Copy the client certificates from your Docker Host to your preferred folder on your development machine, in this case: /home/DockerCerts/:</p>
 
-    <div class="bash highlighter-rouge"><pre class="highlight"><code> scp -i /opt/vmware/appcatalyst/etc/appcatalyst_insecure_ssh_key photon@192.168.135.128:"ca.pem cert.pem ca.pem key.pem" ~/DockerCerts/
+    <div class="bash highlighter-rouge"><pre class="highlight"><code> scp username@192.168.135.128:"ca.pem cert.pem ca.pem key.pem" ~/DockerCerts/
 </code></pre>
     </div>
   </li>
@@ -320,20 +297,12 @@ The past year has seen tremendous growth and support for Containerization within
 
 <h2 id="useful-links">Useful Links</h2>
 <ul>
+  <li><a href="https://www.jetbrains.com/idea/help/developing-a-java-ee-application.html">JetBrains guide for creating a Java EE Application</a></li>
   <li><a href="http://www.vmware.com/cloudnative">VMware Cloud Native Apps Splash Page</a></li>
-  <li><a href="https://communities.vmware.com/community/vmtn/devops/vmware-appcatalyst">VMware AppCatalyst Splash Page</a></li>
-  <li><a href="https://communities.vmware.com/docs/DOC-298850">VMware AppCatalyst Getting Started Guide</a></li>
   <li><a href="https://github.com/vmware/photon">VMware Project Photon Github</a></li>
   <li><a href="https://docs.docker.com/reference/builder/">Docker Docs for getting started with the Dockerfile</a></li>
   <li><a href="https://docs.docker.com/articles/https/">Docker Docs article for securing Docker Service with HTTPS</a></li>
   <li><a href="http://blog.jetbrains.com/idea/2015/03/docker-support-in-intellij-idea-14-1/">Jetbrains blog for configuring IntelliJ IDEA Docker Plug-in</a></li>
-  <li><a href="https://www.jetbrains.com/idea/help/developing-a-java-ee-application.html">JetBrains guide for creating a Java EE Application</a></li>
-</ul>
-
-<h2 id="known-issues">Known issues:</h2>
-<ul>
-  <li>AppCatalyst cannot be used while VMware Fusion is running</li>
-  <li>Certificate configuration uses 192.168.135.128 address, if the target Photon instance is not the first instance powered on it will have a different IP address.  Ensure the target Photon instance is the first instance powered on to maintain a consistent IP address</li>
 </ul>
 
 				<hr />
@@ -341,11 +310,11 @@ The past year has seen tremendous growth and support for Containerization within
 					
 
 <div class="author-image">
-	<img src="http://James65535.github.io/images/bio-photo.jpg" alt="James65535">
+	<img src="http://James65535.github.io/images/bio-photo.png" alt="James65535">
 </div><!-- ./author-image -->
 <div class="author-content">
-	<h3 class="author-name" >Written by <span itemprop="author">James65535</span></h3>
-	<p class="author-bio">MAX_UNSIGNED_SHORT</p>
+	<h3 class="author-name" >Written by <a href="http://james65535.github.io" itemprop="author">James65535</a></h3>
+	<p class="author-bio"></p>
 	<ul>
 		
 	      <li>Twitter: <a href="https://twitter.com/James65535">James65535</a></li>
@@ -357,9 +326,9 @@ The past year has seen tremendous growth and support for Containerization within
 </div><!-- ./author-content -->
 					<br />
 <div class="inline-btn">
-	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=IntelliJ%20Container%20Integration%20with%20VMware%20AppCatalyst&amp;url=http://James65535.github.io/infrastructure/IntelliJ-Container-Integration-with-VMware-AppCatalyst/&amp;via=James65535" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
-	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://James65535.github.io/infrastructure/IntelliJ-Container-Integration-with-VMware-AppCatalyst/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
-	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=http://James65535.github.io/infrastructure/IntelliJ-Container-Integration-with-VMware-AppCatalyst/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
+	<a class="btn-social twitter" href="https://twitter.com/intent/tweet?text=Docker%20Integration%20with%20IntelliJ%20IDEA&amp;url=http://James65535.github.io/development/containers-go-db/&amp;via=James65535" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter</a>
+	<a class="btn-social facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://James65535.github.io/development/containers-go-db/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i> Share on Facebook</a>
+	<a class="btn-social google-plus"  href="https://plus.google.com/share?url=http://James65535.github.io/development/containers-go-db/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i> Share on Google+</a>
 </div><!-- /.share-this -->
 
 					<div class="page-meta">

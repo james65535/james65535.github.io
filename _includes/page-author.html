@@ -8,10 +8,12 @@
 <div class="author-content">
 	<h3 class="author-name" >{{ site.data.messages.locales[site.locale].written_by }} {% if author.web %}<a href="{{ author.web }}" itemprop="author">{{ author.name }}</a>{% else %}<span itemprop="author">{{ author.name }}</span>{% endif %}</h3>
 	<p class="author-bio">{{ author.bio }}</p>
-	{% if author.twitter %}
-      <p class="author-twitter"><a href="https://twitter.com/{{ author.twitter }}"><span class="icon icon--twitter">{% include icon-twitter.svg %}</span><span class="username">{{ include.username }}</span></a></p>
-    {% endif %}
-    {% if author.github %}
-      <p class="author-github"><a href="https://github.com/{{ author.github }}"><span class="icon icon--github">{% include icon-github.svg %}</span><span class="username">{{ include.username }}</span></a></p>
-    {% endif %}
+	<ul>
+		{% if author.twitter %}
+	      <li>Twitter: <a href="https://twitter.com/{{ author.twitter }}">{{ author.twitter }}</a></li>
+	    {% endif %}
+	    {% if author.github %}
+	      <li>Github: <a href="https://github.com/{{ author.github }}">{{ author.github }}</a></li>
+	    {% endif %}
+	</ul>
 </div><!-- ./author-content -->
