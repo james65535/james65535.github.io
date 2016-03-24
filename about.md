@@ -43,10 +43,10 @@ title: "About James65535"
       <h2>Contacts</h2>
       <ul>
         {% if site.owner.twitter %}
-          <li>Twitter: <a href="https://twitter.com/{{ author.twitter }}">{{ site.owner.twitter }}</a></li>
+          <li>Twitter: <a href="https://twitter.com/{{ site.owner.twitter }}">{{ site.owner.twitter }}</a></li>
         {% endif %}
         {% if site.owner.github %}
-          <li>Github: <a href="https://github.com/{{ author.github }}">{{ site.owner.github }}</a></li>
+          <li>Github: <a href="https://github.com/{{ site.owner.github }}">{{ site.owner.github }}</a></li>
         {% endif %}
   </ul>
     </div>
