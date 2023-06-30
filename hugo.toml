@@ -1,0 +1,157 @@
+baseURL = "http://james65535.github.io/"
+title = "Unsigned Int"
+paginate = 5
+theme = "PaperMod"
+enableRobotsTXT = true
+#buildDrafts = false
+#buildFuture = false
+#buildExpired = false
+#googleAnalytics = "UA-123-45"
+pygmentsUseClasses = true
+
+[minify]
+disableXML = true
+minifyOutput = true
+
+[params]
+  env = "production"
+  title = "blog"
+  description = "Game Programmer"
+  keywords = [ "Blog", "Portfolio", "PaperMod" ]
+  author = "James"
+  images = [ "/main.png" ]
+  DateFormat = "January 2, 2006"
+  defaultTheme = "dark"
+  disableThemeToggle = false
+  ShowReadingTime = false
+  ShowShareButtons = false
+  ShowPostNavLinks = false
+  ShowBreadCrumbs = false
+  ShowCodeCopyButtons = true
+  ShowWordCount = false
+  ShowRssButtonInSectionTermList = true
+  UseHugoToc = false
+  disableSpecial1stPost = false
+  disableScrollToTop = false
+  comments = false
+  hidemeta = false
+  hideSummary = false
+  showtoc = false
+  tocopen = false
+  mainSections = [ "posts", "tags"]
+  hidefooter = false
+
+  [params.assets]
+    favicon = "favicon.ico"
+    favicon16x16 = "favicon.ico"
+    favicon32x32 = "favicon.ico"
+    apple_touch_icon = "<link / abs url>"
+    safari_pinned_tab = "<link / abs url>"
+
+  [params.label]
+    text = ""
+    icon = ""
+    iconHeight = 35
+
+  [params.profileMode]
+    enabled = false
+    title = "James McAfee - Game Programmer"
+    subtitle = """
+I'm a software engineer and architect who recently switched from a career of 20 years in Enterprise Software and Distributed Systems to Game Development. Gaming has been a lifelong passion for me stemming back from making WADs for Doom and my own ROM 2.4 MUDs through playing Quake3 competitively and now finally smashing FromSoftware games on the Playstation.
+&nbsp;
+&nbsp;
+
+
+Here you'll find information on my recent work as well as thoughts on software engineering in my blog.  Take Care!
+"""
+    imageUrl = "/main.png"
+    imageWidth = 120
+    imageHeight = 120
+    imageTitle = "my image"
+    mainSections = [ "posts", "tags"]
+
+  [[params.profileMode.buttons]]
+    name = "Projects"
+    url = "/projects/"
+
+  [[params.profileMode.buttons]]
+    name = "CV"
+    url = "/cv/"
+
+  [params.homeInfoParams]
+    Title = "James McAfee 👋"
+    Content = """
+I'm a software engineer and architect who recently switched from a career of 20 years in Enterprise Software and Distributed Systems to Game Development. Gaming has been a lifelong passion for me stemming back from making WADs for Doom and my own ROM 2.4 MUDs through playing Quake3 competitively and now finally smashing FromSoftware games on the Playstation.
+&nbsp;
+
+Here you'll find information on my recent work as well as thoughts on software engineering in my blog.  Take Care!
+"""
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/james65535"
+
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://www.linkedin.com/in/james-m-38a3814b/"
+
+  [[params.socialIcons]]
+    name = "itchio"
+    url = "https://itch.io"
+
+#  [params.analytics.google]
+#    SiteVerificationTag = "XYZabc"
+
+#  [params.analytics.bing]
+#    SiteVerificationTag = "XYZabc"
+
+#  [params.analytics.yandex]
+#    SiteVerificationTag = "XYZabc"
+
+  ShareButtons = ["linkedin", "twitter"]
+
+  [params.cover]
+    hidden = false
+    hiddenInList = false
+    hiddenInSingle = false
+    responsiveImages = true
+
+  [params.editPost]
+    URL = "https://github.com/james65535/james65535/content"
+    Text = "Suggest Changes"
+    appendFilePath = true
+
+  [params.fuseOpts]
+    isCaseSensitive = false
+    shouldSort = true
+    location = 0
+    distance = 1_000
+    threshold = 0.4
+    minMatchCharLength = 0
+    keys = [ "title", "permalink", "summary", "content" ]
+
+[[menu.main]]
+  identifier = "Projects"
+  name = "Projects"
+  url = "/projects/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "CV"
+  name = "CV"
+  url = "/cv/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "Archives"
+  name = "Archives"
+  url = "/archives/"
+  weight = 30
+
+[[menu.main]]
+  identifier = "tags"
+  name = "Tags"
+  url = "/tags/"
+  weight = 40
+  noClasses = false
+
