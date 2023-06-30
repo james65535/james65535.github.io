@@ -83,7 +83,7 @@ Information provided upon request.
 ---
 
 ### Education
-***[CGSpectrumn](https://www.cgspectrum.com/)***: December 2022 – September 2023 - Game Programming Curriculum
+***[CGSpectrum](https://www.cgspectrum.com/)***: December 2022 – September 2023 - Game Programming Curriculum
 
 Curriculum focused on advanced uses of the Unreal Engine for a more complete picture of developing Unreal games including:
 

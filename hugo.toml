@@ -19,7 +19,7 @@ minifyOutput = true
   description = "Game Programmer"
   keywords = [ "Blog", "Portfolio", "PaperMod" ]
   author = "James"
-  images = [ "/main.png" ]
+  images = [ "" ]
   DateFormat = "January 2, 2006"
   defaultTheme = "dark"
   disableThemeToggle = false
@@ -64,9 +64,9 @@ I'm a software engineer and architect who recently switched from a career of 20 
 
 Here you'll find information on my recent work as well as thoughts on software engineering in my blog.  Take Care!
 """
-    imageUrl = "/main.png"
-    imageWidth = 120
-    imageHeight = 120
+    imageUrl = "/j2.png"
+    imageWidth = 200
+    imageHeight = 200
     imageTitle = "my image"
     mainSections = [ "posts", "tags"]
 
