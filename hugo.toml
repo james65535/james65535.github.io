@@ -57,7 +57,7 @@ minifyOutput = true
     enabled = false
     title = "James McAfee - Game Programmer"
     subtitle = """
-I'm a software engineer and architect who recently switched from a career of 20 years in Enterprise Software and Distributed Systems to Game Development. Gaming has been a lifelong passion for me stemming back from making WADs for Doom and my own ROM 2.4 MUDs through playing Quake3 competitively and now finally smashing FromSoftware games on the PS5.
+I'm a software engineer and architect who recently switched from a career of 20 years in Enterprise Software and Distributed Systems to Game Development. Gaming has been a lifelong passion for me stemming back from making WADs for Doom and my own ROM 2.4 MUDs through playing Quake3Arena / Quakelive competitively and now finally smashing FromSoftware games on the PS5.
 &nbsp;
 &nbsp;
 
@@ -81,7 +81,7 @@ Here you'll find information on my recent work as well as thoughts on software e
   [params.homeInfoParams]
     Title = "James McAfee 👋"
     Content = """
-I'm a software engineer and architect who recently switched from a career of 20 years in Enterprise Software and Distributed Systems to Game Development. Gaming has been a lifelong passion for me stemming back from making WADs for Doom and my own ROM 2.4 MUDs through playing Quake3 competitively and now finally smashing FromSoftware games on the Playstation.
+I'm a software engineer and architect who recently switched from a career of 20 years in Enterprise Software and Distributed Systems to Game Development. Gaming has been a lifelong passion for me stemming back from making WADs for Doom and my own ROM 2.4 MUDs through playing Quake3Arena / Quakelive competitively and now finally smashing FromSoftware games on the PS5.
 &nbsp;
 
 Here you'll find information on my recent work as well as thoughts on software engineering in my blog.  Take care!
@@ -143,15 +143,21 @@ Here you'll find information on my recent work as well as thoughts on software e
   weight = 20
 
 [[menu.main]]
+  identifier = "About"
+  name = "About"
+  url = "/about/"
+  weight = 30
+
+[[menu.main]]
   identifier = "Archives"
   name = "Archives"
   url = "/archives/"
-  weight = 30
+  weight = 40
 
 [[menu.main]]
   identifier = "tags"
   name = "Tags"
   url = "/tags/"
-  weight = 40
+  weight = 50
   noClasses = false
 

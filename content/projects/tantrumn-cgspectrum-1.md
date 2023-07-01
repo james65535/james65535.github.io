@@ -20,3 +20,8 @@ The game includes player levels, [Kinematics](https://en.wikipedia.org/wiki/Kine
 
 
 * Impacts have the ability to stun characters (players and AI).  The magnitude of impact determines the duration of stun and strength of controller vibration. Additionally, the stun state controls animation behaviour by triggering corresponding [Animation Montages](https://docs.unrealengine.com/5.2/en-US/animation-montage-in-unreal-engine/).
+
+### Third Party Attribution
+* Character Model and majority of character animations come from the Unreal Engine [Hour of Code](https://www.unrealengine.com/marketplace/en-US/product/unreal-engine-hour-of-code) pack
+* Some snippets of code from CGSpectrum's example content has been re-utilised in this implementation
+* Some Meshes and Materials from Unreal's [Starter Content Pack](https://docs.unrealengine.com/5.2/en-US/assets-and-content-packs-in-unreal-engine/) have been utilised.

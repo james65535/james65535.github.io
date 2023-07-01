@@ -30,7 +30,7 @@ million in CapEx and OpEx savings within first year of operation
 #### [VMware](https://www.vmware.com/)
 ***Senior Technologist & Tech Lead - Application Platform Architecture - Asia, Pacific & Japan***: February 2014 – June 2023
 
-Served as VMware’s lead technologist for the Modern Application business unit within the Asia Pacific region. Developed and lead the Application Platform Architecture practice focused on building modern highly scalable Application Platforms and Services. Primary responsibilities: Principal architecture and development for large scale Distributed Systems, Open Source Community engagement, and driving innovation internally within VMware through designing new product offerings and capabilities.
+Served as VMware’s lead technologist for the Modern Application business unit within the Asia Pacific region. Developed and led the Application Platform Architecture practice focused on building modern highly scalable Application Platforms and Services. Primary responsibilities: Principal architecture and development for large scale Distributed Systems, Open Source Community engagement, and driving innovation internally within VMware through designing new product offerings and capabilities.
 
 Worked as an ambassador for the Office of the CTO working closely with internal R&D teams. Programme lead for Office of the CTO initiatives for both Product Quality Improvement as well as Innovation for Serverless Computing. Additionally, drove product innovation and adoption with multiple global firsts for new product implementations with our customers.
 

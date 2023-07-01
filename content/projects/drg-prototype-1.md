@@ -32,3 +32,6 @@ This Plugin allows game designers to quickly add and modify Rooms and other leve
 * Easy to extend as Objects and code have been developed to make use of Unreal Engine's [Interface API](https://docs.unrealengine.com/5.2/en-US/interfaces-in-unreal-engine/) and does not hard code any specific class inheritance requirements other than the Interface.
 
 * Magnetised Rooms which can instantly snap to other Rooms around it after being resized
+
+### Third Party Attribution
+* Designers bring their own Meshes and Assets but the plugin includes examples which point to Unreal's Starter Content Pack
