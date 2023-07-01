@@ -9,7 +9,7 @@ summary: "Curriculum Vitae: James McAfee - Software Engineer & Game Programmer"
 ### Summary
 James McAfee has over twenty years of consultancy experience architecting and engineering Application Platforms and Enterprise Software as a Service products for large-scale organisations such as JPMC, Australian Stock Exchange, PwC, Common Wealth Bank of Australia, and MGM Grand to name a few.
 
-After a successful career in Enterprise Software, James has chosen to hit the career reset button and follow a long neglected love of Games and Game Development.  Having recently studied as part of [CGSpectrum's](https://www.cgspectrum.com/) tri-semester [Game Programming curriculum](https://www.cgspectrum.com/courses/game-programming-course#curriculum) and mentorship with game development industry professionals, James is now looking to learn and grow in the Games Industry while applying his past experience in senior engineering roles.
+After a successful career in Enterprise Software, James has chosen to hit the career reset button and follow a long neglected love of Games and Game Development.  Having recently studied as part of [CGSpectrum's](https://www.cgspectrum.com/) trimester [Game Programming curriculum](https://www.cgspectrum.com/courses/game-programming-course#curriculum) and mentorship with game development industry professionals, James is now looking to learn and grow in the Games Industry while applying his past experience in senior engineering roles.
 
 Notable projects include:
 

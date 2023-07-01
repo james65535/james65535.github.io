@@ -4,7 +4,7 @@ date: 2016-03-11T15:55:12+10:00
 tags: ["Javascript", "JSX", "React", "Babel", "IDE"]
 ---
 
-Today I ran into major problems trying to setup a React script to query JSON from a site and parse it into something useable.  I'm new to this stuff and used an existing <a href="https://facebook.github.io/react/tips/initial-ajax.html">tutorial</a> to mangle according to my needs.
+Today I ran into major problems trying to setup a React script to query JSON from a site and parse it into something usable.  I'm new to this stuff and used an existing <a href="https://facebook.github.io/react/tips/initial-ajax.html">tutorial</a> to mangle according to my needs.
 
 I ended up with the following code:
 
@@ -90,7 +90,7 @@ Nothing worked.  Finally in my browser when loading the React page I decided to 
 
 **Bingo!**
 
-Since I'm currently working in a local testing phase I simply added the following to my Go function for serving the JSON data and like magic my React application sprang to life!
+Since I'm currently working in a local testing phase I simply added the following to my Go function for serving the JSON data and like magic my React application sprang to life! Of course this needs to change once the serving system architecture has been defined.
  
 ~~~ golang
 w.Header().Set("Access-Control-Allow-Origin", "*")

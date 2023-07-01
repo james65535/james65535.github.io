@@ -10,22 +10,13 @@ cover:
 ---
 
 ### Brief
-Tantrumn is a solo school project which is part of the [CGSpectrum](https://www.cgspectrum.com/) Game Programming Curriculum.  The game was designed to accomodate single, split view, or networked multi-player racing game.  The player(s) can compete against each other or AI bots.
+Tantrumn is a racing game (on foot, not car) developed as a solo school project which is part of the [CGSpectrum](https://www.cgspectrum.com/) Game Programming Curriculum.  The game was designed to accommodate single player, multi-player split view, and networked multi-player modes.  The player(s) can compete against each other or AI bots.
 ### Role
-The design and guidance was provided by the CGSpectrum curriculum.  My role was to implement the game with scope to make any changes I deemed fit.  These changes include a Custom Character Movement Component (detailed below), level layouts, Mesh/Audio/Materiel assets, AI behaviour, and UI elements.
+The design and guidance was provided by the CGSpectrum curriculum along with code examples.  My role was to implement the game with scope to make any changes I deemed fit.  Changes I introduced spanned the gamut of Unreal Engine capabilities such as a custom [Character Movement Component](https://docs.unrealengine.com/5.2/en-US/understanding-networked-movement-in-the-character-movement-component-for-unreal-engine/) (detailed below), level layouts, Mesh / Audio / Material assets, AI behaviour, and UI elements.  The implementation was done primarily in C++ with [Blueprints](https://docs.unrealengine.com/5.2/en-US/introduction-to-blueprints-visual-scripting-in-unreal-engine/) used for prototyping functionality, scripting some aspects of [Widgets](https://docs.unrealengine.com/5.2/en-US/creating-widgets-in-unreal-engine/) used as part of the UI, and level specific gameplay elements. 
 ### Summary of Elements
-The game includes player levels, designer kinematics test levels along with custom GameModes which can match gameplay to the corresponding levels.  All gameplay supports network play whether via dedicated server and clients, or local LAN play.  A Customer Character Movement Component was developed to extend Epic's imeplementation to include additional modes of travel.  These modes are efficiently replicated via Bit Flags by extending the Network Prediction system.  The end result being minimal server corrections for client side movement predictions.
+The game includes player levels, [Kinematics](https://en.wikipedia.org/wiki/Kinematics) test levels, custom [Game Modes](https://docs.unrealengine.com/5.2/en-US/game-mode-and-game-state-in-unreal-engine/) which can match gameplay to the corresponding levels.  All gameplay supports network play whether via dedicated server and clients, or local LAN play.  Detail on additional implementations included in the game as follows:
 
-* Rapid Creation of Rooms with auto-sizing walls, meshes, and materials
-These changes include a Custom Character Movement Component to allow for additional modes of movement to be efficiently replicated across networked systems. 
-* Simple Editor Utility for rapid  placement or dynamically adjust each room directly
+* The custom Character Movement Component extends Epic's implementation to include additional modes of travel.  These modes are efficiently replicated via [Bit Flags](https://en.wikipedia.org/wiki/Bit_field) by extending the Network Prediction system used for lag compensation (reducing the [rubberbanding](https://www.dictionary.com/browse/rubberbanding) effect prevalent in many older online games), specifically [FSavedMove](https://docs.unrealengine.com/5.2/en-US/API/Runtime/Engine/GameFramework/FSavedMove_Character/). The end result being minimal [Server Corrections](https://docs.unrealengine.com/5.2/en-US/understanding-networked-movement-in-the-character-movement-component-for-unreal-engine/#customizingnetworkedcharactermovement) for client side movement predictions.
 
-* Packaged as a plugin with everything needed to run out of the box
 
-* Toggable Doorways with dynamic dimensions for which Data Assets can be used to specify what the door should be and how it should look
-
-* Ability to have Room Themes and Furniture presets using Data Assets
-
-* Easy to extend as Objects and code have been developed to make use of Interfaces and does not hard code any specific classes.
-
-* Magnetised Rooms which can instantly snap to other rooms around it after being resized
+* Impacts have the ability to stun characters (players and AI).  The magnitude of impact determines the duration of stun and strength of controller vibration. Additionally, the stun state controls animation behaviour by triggering corresponding [Animation Montages](https://docs.unrealengine.com/5.2/en-US/animation-montage-in-unreal-engine/).

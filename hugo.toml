@@ -15,11 +15,11 @@ minifyOutput = true
 
 [params]
   env = "production"
-  title = "blog"
+  title = "James McAfee"
   description = "Game Programmer"
-  keywords = [ "Blog", "Portfolio", "PaperMod" ]
+  keywords = [ "Blog", "Portfolio", "GameDev", "Game Programmer", "Programmer", "Software Engineer"]
   author = "James"
-  images = [ "" ]
+  images = [ "/main.png" ]
   DateFormat = "January 2, 2006"
   defaultTheme = "dark"
   disableThemeToggle = false
@@ -57,12 +57,12 @@ minifyOutput = true
     enabled = false
     title = "James McAfee - Game Programmer"
     subtitle = """
-I'm a software engineer and architect who recently switched from a career of 20 years in Enterprise Software and Distributed Systems to Game Development. Gaming has been a lifelong passion for me stemming back from making WADs for Doom and my own ROM 2.4 MUDs through playing Quake3 competitively and now finally smashing FromSoftware games on the Playstation.
+I'm a software engineer and architect who recently switched from a career of 20 years in Enterprise Software and Distributed Systems to Game Development. Gaming has been a lifelong passion for me stemming back from making WADs for Doom and my own ROM 2.4 MUDs through playing Quake3 competitively and now finally smashing FromSoftware games on the PS5.
 &nbsp;
 &nbsp;
 
 
-Here you'll find information on my recent work as well as thoughts on software engineering in my blog.  Take Care!
+Here you'll find information on my recent work as well as thoughts on software engineering in my blog.  Take care!
 """
     imageUrl = "/j2.png"
     imageWidth = 200
@@ -84,7 +84,7 @@ Here you'll find information on my recent work as well as thoughts on software e
 I'm a software engineer and architect who recently switched from a career of 20 years in Enterprise Software and Distributed Systems to Game Development. Gaming has been a lifelong passion for me stemming back from making WADs for Doom and my own ROM 2.4 MUDs through playing Quake3 competitively and now finally smashing FromSoftware games on the Playstation.
 &nbsp;
 
-Here you'll find information on my recent work as well as thoughts on software engineering in my blog.  Take Care!
+Here you'll find information on my recent work as well as thoughts on software engineering in my blog.  Take care!
 """
 
   [[params.socialIcons]]
@@ -97,7 +97,7 @@ Here you'll find information on my recent work as well as thoughts on software e
 
   [[params.socialIcons]]
     name = "itchio"
-    url = "https://itch.io"
+    url = "https://aefx.itch.io"
 
 #  [params.analytics.google]
 #    SiteVerificationTag = "XYZabc"
