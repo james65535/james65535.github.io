@@ -3,7 +3,7 @@ title: "Working Notes - Graphics Settings Menu in UE5"
 date: 2023-07-07T15:11:30+10:00
 tags: ["Graphics", "C++", "Screen Resolution", "UE5", "Widgets", "Blueprints"]
 cover:
-  image: "/posts/screenres/screenresuiunexpanded.png"
+  image: "/posts/screenres/screenresuiunexpandedsm.png"
   hidden: false
 draft: false
 ---
@@ -24,7 +24,14 @@ We'll use C++ and Unreal Engine's reflection system to handle most of the work, 
   ResolutionSizeY=768
   FullscreenMode=2
 ```
-3. We'll need to consider the flow for Presenting, Applying, Storing, and Retrieving the graphics settings you wish the user to be able to configure.
+3. We'll need to consider the configuration flow for the following aspects:
+
+* Presenting Screen Resolution Information
+* Applying Player Selected Screen Resolution
+* Storing Game User Settings Containing Selected Screen Resolution
+* Retrieving Game User Settings with Selected Screen Resolution
+
+The Storing and Retrieving elements will allow us to save the settings across Game restarts and the like since this information will go to and come from disk.
 
 4. Retrieve - Depending on your preference you can place the following code where it fits within your project.  This quick example uses the player's HUD and overrides BeginPlay.
 ```cpp
