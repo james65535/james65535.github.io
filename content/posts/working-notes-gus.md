@@ -175,7 +175,7 @@ void AGameHUD::ConfirmGameUserSettings(bool bOverrideCommandLine)
 ![Populate Screen Resolutions ComboBox Part 2](/posts/screenres/populatecomboboxfuncpt2.png)
 
 
-14. We're almost done. Create another function called `SetScreenResolution`  Set an input parameter for the function as `InSelectedRes<String>`  We've added a timer here which will call the Revert Function upon expiration.  In a moment we'll add an event for On-Click for the confirm button which will destroy that timer and save the Game User Settings to disk.
+14. We're almost done. Create another function called `SetScreenResolution`  Set an input parameter for the function as `InSelectedRes<String>`  We've added a timer here which will call the Revert Function upon expiration. A helpful thing to add would be a countdown in the UI using Widget Animations to let the user know how much time they have left to confirm, but you can do that in your own time. In a moment we'll add an event for On-Click for the confirm button which will destroy that timer and save the Game User Settings to disk.
 
 ![Set the Screen Resolution to Selected Value](/posts/screenres/setscreenresfunc.png)
 
@@ -201,7 +201,7 @@ void AGameHUD::ConfirmGameUserSettings(bool bOverrideCommandLine)
 
 ![Set the Screen Resolution to Selected Value](/posts/screenres/screenresuiexpanded.png)
 
-And there you go, a working setup to allow Players to change their screen resolution in ~~5~~ 19 easy steps! &#127881; For further work you can include other graphics settings, don't forget my note in step 6. As well as limit the number of Screen Resolutions options which get listed within the ComboBox, as Tyranny of Choice is a thing.   At any rate, thanks for reading!
+And there you go, a working setup to allow Players to change their screen resolution in ~~5~~ 19 easy steps! &#127881; For further work you can include other graphics settings, don't forget my note in step 6. Create a visual confirm countdown timer in the UI. As well as limit the number of Screen Resolutions options which get listed within the ComboBox, as Tyranny of Choice is a thing.   At any rate, thanks for reading!
 
 Full files:
 

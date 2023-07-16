@@ -5,11 +5,11 @@ url: "/about/"
 summary: "General Info About James"
 ---
 ## Bio
-{{< rawhtml >}}<figure style="float:left; margin: 5px 0px 0px 0px"> <img src="/jcanoli.png" style="margin: 0px 10px 10px 0px; height:140px; width:auto; vertical-align:left; border:0"/> <figcaption style="margin: 0px 0px 0px 0px;">Some weirdo...</figcaption></figure> {{</ rawhtml  >}}I'm a computer nerd 🧐 with a short memory and a hunger to learn new things (these two elements are either the perfect combination or the absolute worst combination...). To balance the brain I try to work on art in my free time.  I'm equally keen on Representational Fine Art, Concept Art for Entertainment Industries, and Illustration.  When I lived in London, I had an art studio in New Cross and, if I'm allowed a humble brag, was fortunate to have my work on display at [The Mall Gallery](https://www.mallgalleries.org.uk/) on the Royal Mall along side people who, unlike me, had actual real skill and talent.
+{{< rawhtml >}}<figure style="float:left; margin: 5px 0px 0px 0px"> <img src="/jcanoli.png" style="margin: 0px 10px 10px 0px; height:140px; width:auto; vertical-align:left; border:0"/> <figcaption style="margin: 0px 0px 0px 0px;">Some weirdo...</figcaption></figure> {{</ rawhtml  >}}I'm a computer nerd 🧐 with a short memory and a hunger to learn new things (these two elements are either the perfect combination or the absolute worst combination...). To balance the brain I try to work on art in my free time, play some sports, and listen to Bass Heavy music.  Artwise, I'm equally keen on Representational Fine Art, Concept Art for Entertainment Industries, and Illustration.  During my time in London, I had an art studio in New Cross and, if I'm allowed a humble brag, was fortunate to have my work on display at [The Mall Gallery](https://www.mallgalleries.org.uk/) on the Royal Mall along side people who, unlike me, had actual real skill and talent.
 
 On the physical side I seem to oscillate over the years between Brazilian Jiu Jitsu, Mountain Biking, Bouldering, and Muay Thai.  Thus completing the law that every computer nerd must participate in a martial art.
 
-I'm originally from the UK but grew up dodging bullets in Detroit in the 80s (thanks mom and dad!). Over the years I've had a chance to travel quite a lot to live and work, maybe too much as once during a four year period I had lived on four different continents!  Probably my most favourite and intense experience was living in Hong Kong and working in Beijing, Shanghai, and Macau on a regular basis.
+I'm originally from the UK but grew up dodging bullets in Detroit in the 80s (thanks mom and dad!). Over the years I've had a chance to travel quite a lot to live and work, maybe too much as during a four year period I had lived on four different continents!  Probably my most favourite and intense experience was living in Hong Kong and working in Beijing, Shanghai, and Macau on a regular basis.
 
 I now reside in Australia with my son and our [Ackie Monitor](https://en.wikipedia.org/wiki/Spiny-tailed_monitor). His name is Admiral "It's a Trap Mother Fu.....!" Ackbar, or AA for short.
 
@@ -21,6 +21,7 @@ The following list contains papers and books that are important to me.  Not just
 * Leslie "Master of Time{{< rawhtml >}}<sub>2</sub>{{</ rawhtml  >}}" Lamport - [The Part-Time Parliament](https://lamport.azurewebsites.net/pubs/lamport-paxos.pdf)
 * Tony "The Don Dapper" Hoare - [Communicating Sequential Processes](https://www.cs.cmu.edu/~crary/819-f09/Hoare78.pdf)
 * Joe "The Legend" Armstrong - [Making Reliable Distributed Systems in the Presence of Software Errors](https://erlang.org/download/armstrong_thesis_2003.pdf)
+* David "Citizens Watch 4 Lyfe" Harel - [Statecharts: A Visual Formalism for Complex Systems](https://www.sciencedirect.com/science/article/pii/0167642387900359)
 * Roy "Don't Hate on HATEOS" Fielding - [Architectural Styles and
 the Design of Network-based Software Architectures](https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm)
 * Brian Christian & Tom Griffiths - [Algorithms to Live By: The Computer Science of Human Decisions](https://www.goodreads.com/en/book/show/25666050)
