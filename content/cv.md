@@ -104,16 +104,18 @@ Mentorship provided by [Cliff Shariff](https://www.linkedin.com/in/cliff-sharif/
 ---
 
 ### Skillset
-| Languages | Tools | Platforms | Middleware | Methodologies |
-| ---------- | ----- | --------- | ---------- | ------------- |
-| • Go | • Git | • Unreal Engine 4 & 5 | • ETCD | • Technical Leadership |
-| • C++ & Unreal Engine APIs for C++ / Blueprints | • Gitlab & Github | • Kubernetes | • Envoy | • Distributed Systems (Paxos / Raft / Byzantine Fault Tolerance |
-| • Javascript | • Jira | • Knative | • Postgres | • TDD |
-| • BASH/ZSH  | • Jenkins | • OpenFaaS | • Redis | • Mentorship for junior Engineers |
-| • PowerShell | • Artifactory | • Istio Service Mesh | • RabbitMQ| • Agile (Lean, Scrum) |
-| • PHP | • Cucumber | • GCP | • GraphDB | • Public Speaking & Keynotes with audiences up to 2,500 |
-| • GraphQL | • SonarQube | • MySQL | | • UX Design (JTBD) |
-| • GRPC | | | | |
+| Languages                                       | Tools                             | Platforms             | Middleware | Methodologies                                                   |
+|-------------------------------------------------|-----------------------------------|-----------------------|------------|-----------------------------------------------------------------|
+| • Go                                            | • Git                             | • Unreal Engine 4 & 5 | • ETCD     | • Technical Leadership                                          |
+| • C++ & Unreal Engine APIs for C++ / Blueprints | • Gitlab & Github                 | • Kubernetes          | • Envoy    | • Distributed Systems (Paxos / Raft / Byzantine Fault Tolerance |
+| • Javascript                                    | • Jetbrains Rider & Visual Studio | • Knative             | • Postgres | • TDD                                                           |
+| • BASH / ZSH / etc...                           | • Blender                         | • OpenFaaS            | • Redis    | • Mentorship for junior Engineers                               |
+| • PowerShell                                    | • ZBrush                          | • Istio Service Mesh  | • RabbitMQ | • Agile (Lean, Scrum)                                           |
+| • PHP                                           | • Jenkins                         | • GCP                 | • GraphDB  | • Public Speaking & Keynotes with audiences up to 2,500         |
+| • GraphQL                                       | • Cucumber                        | • MySQL               |            | • UX Design (JTBD)                                              |
+| • GRPC                                          | • Jenkins                         |                       |            |                                                                 |
+|                                                 | • SonarQube                       |                       |            |                                                                 |
+|                                                 | • Artifactory                     |                       |            |                                                                 |
 
 
 ### Certifications
