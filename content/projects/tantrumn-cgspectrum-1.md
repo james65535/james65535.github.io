@@ -5,7 +5,7 @@ draft: false
 tags: ["unreal engine", "c++", "blueprints", "game", "UE5"]
 layout: "Projects"
 cover:
-  image: "tantrumn.png"
+  image: "tantrumn-bar.png"
   hidden: false
 ---
 
